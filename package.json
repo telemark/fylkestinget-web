@@ -17,7 +17,7 @@
   ],
   "main": "index.js",
   "engines": {
-    "node": ">=8.9.1"
+    "node": ">=8.9.4"
   },
   "scripts": {
     "test": "standard && nsp check && ava",
@@ -27,7 +27,8 @@
     "standard-fix": "standard --fix",
     "dev": "node server.js",
     "build": "next build",
-    "start": "NODE_ENV=production node server.js"
+    "start": "node server.js",
+    "refresh": "rm -rf node_modules && rm package-lock.json"
   },
   "keywords": [],
   "license": "MIT",
@@ -52,8 +53,10 @@
     "alias": "fylkestinget.tjeneste.win",
     "type": "npm",
     "engines": {
-      "node": "8.9.1"
+      "node": "8.9.4"
     },
-    "dotenv": "production.env"
+    "env": {
+      "NODE_ENV": "production"
+    }
   }
 }
