@@ -19,7 +19,7 @@ const app = next({ dev })
 const handle = app.getRequestHandler()
 
 const server = micro(async (req, res) => {
-  if(Gun.serve(req, res)) {
+  if (Gun.serve(req, res)) {
     console.log('Gun req', req)
     res.writeHead(200, {'Content-Type': 'text/html'})
     res.end(req)

@@ -1,5 +1,5 @@
-export default () => (
-  <form>
+export default ({ addMeeting }) => (
+  <form onSubmit={addMeeting}>
     <input type='text' name='meetingUrl' id='meetingUrl' placeholder='URL til møte' />
     <button type='submit'>Importer</button>
     <style jsx>
