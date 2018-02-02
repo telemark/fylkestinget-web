@@ -1,3 +1,5 @@
+const Gun = require('gun')
+const os = require('os')
 const micro = require('micro')
 const { json } = micro
 const { parse } = require('url')
@@ -17,6 +19,12 @@ const app = next({ dev })
 const handle = app.getRequestHandler()
 
 const server = micro(async (req, res) => {
+  if(Gun.serve(req, res)) {
+    console.log('Gun req', req)
+    res.writeHead(200, {'Content-Type': 'text/html'})
+    res.end(req)
+    return
+  }
   session(req, res)
   const { query, pathname } = await parse(req.url, true)
   const payload = req.method === 'POST' ? await json(req) : query
@@ -37,6 +45,14 @@ const server = micro(async (req, res) => {
     return handle(req, res)
   }
 })
+
+const gun = Gun({
+  file: `${os.tmpdir()}/data.json`,
+  web: server
+})
+
+// Sync everything
+gun.on('out', {get: {'#': {'*': ''}}})
 
 app.prepare().then(() => {
   server.listen(port, err => {

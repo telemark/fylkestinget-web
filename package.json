@@ -28,13 +28,14 @@
     "dev": "node server.js",
     "build": "next build",
     "start": "node server.js",
-    "refresh": "rm -rf node_modules && rm package-lock.json",
+    "refresh": "rm -rf node_modules && rm package-lock.json && npm install",
     "deploy": "now && now alias"
   },
   "keywords": [],
   "license": "MIT",
   "dependencies": {
     "axios": "0.17.1",
+    "gun": "0.9.91",
     "jsonwebtoken": "8.1.1",
     "micro": "9.1.0",
     "micro-cookie-session": "2.0.0-beta.1",

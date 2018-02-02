@@ -12,11 +12,14 @@ export default ({ children }) => (
       {`
         body {
           background: #f2f2f2;
-          font-family: Roboto, sans-serif;
+          font-family: "Open sans", sans-serif;
           margin: 0;
           padding: 0;
           height: 100%;
           text-align: center;
+        }
+        h1, h2, h3, h4, h5, h6 {
+          font-family: Arial, sans-serif;
         }
         h1 {
           font-weight: 400;
