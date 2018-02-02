@@ -2,8 +2,10 @@ import React, { Component } from 'react'
 import Session from '../components/Session'
 import Page from '../components/Page'
 import AddMeeting from '../components/AddMeeting'
+import ListMeetings from '../components/ListMeetings'
 const Gun = require('gun/gun')
-const gun = Gun('http://localhost:3000/gun')
+const gunURL = process.env.NOW_URL ? `${process.env.NOW_URL}/gun` : 'http://localhost:3000/gun'
+const gun = Gun(gunURL)
 
 class Admin extends Component {
   constructor (props) {
@@ -16,15 +18,12 @@ class Admin extends Component {
 
   async componentDidMount () {
     console.log('mounted')
-    gun.get('fylkestinget').on(state => {
+    gun.get('fylkestinget').get('meetings').on(state => {
       if (state !== undefined) {
         console.log(state)
-        Object.keys(state).filter(key => key !== '_').forEach(key => {
-          const updatedState = {[key]: state[key]}
-          this.setState(updatedState)
-        })
+        this.setState({meetings: state})
       }
-    }, true)
+    })
   }
 
   addMeeting (e) {
@@ -38,6 +37,7 @@ class Admin extends Component {
     return (
       <Page username={this.props.user ? this.props.user.userId : null}>
         <AddMeeting addMeeting={this.addMeeting} />
+        <ListMeetings meetings={this.state.meetings} />
       </Page>
     )
   }
