@@ -5,8 +5,10 @@ import AddMeeting from '../components/AddMeeting'
 import ListMeetings from '../components/ListMeetings'
 const axios = require('axios')
 const Gun = require('gun/gun')
+require('gun/lib/open')
 const gunURL = process.env.NOW_URL ? `${process.env.NOW_URL}/gun` : 'http://localhost:3000/gun'
 const gun = Gun(gunURL)
+const repackMeeting = require('../lib/repack-meeting')
 
 class Admin extends Component {
   constructor (props) {
@@ -15,6 +17,7 @@ class Admin extends Component {
       meeting: false
     }
     this.addMeeting = this.addMeeting.bind(this)
+    this.updateMeeting = this.updateMeeting.bind(this)
   }
 
   async componentDidMount () {
@@ -22,8 +25,15 @@ class Admin extends Component {
     gun.get('fylkestinget').on(state => {
       if (state !== undefined) {
         console.log(state)
-        this.setState({meeting: state})
+        this.updateMeeting()
       }
+    })
+  }
+
+  updateMeeting () {
+    gun.get('fylkestinget').open(data => {
+      console.log(data)
+      this.setState({meeting: repackMeeting(data)})
     })
   }
 
@@ -34,8 +44,6 @@ class Admin extends Component {
     const meetingId = urlSplit[urlSplit.length - 1]
     const url = `/api/agenda/${meetingId}`
     const { data } = await axios(url)
-    // Clears previous data
-    gun.get('fylkestinget').put(null)
     // Adds new data
     gun.get('fylkestinget').put(data)
     meetingUrlField.value = ''
