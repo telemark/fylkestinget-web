@@ -3,8 +3,8 @@ import Session from '../components/Session'
 import Page from '../components/Page'
 import AddMeeting from '../components/AddMeeting'
 import ListMeetings from '../components/ListMeetings'
+const axios = require('axios')
 const Gun = require('gun/gun')
-const parseAgenda = require('../lib/parse-agenda')
 const gunURL = process.env.NOW_URL ? `${process.env.NOW_URL}/gun` : 'http://localhost:3000/gun'
 const gun = Gun(gunURL)
 
@@ -12,17 +12,17 @@ class Admin extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      meetings: false
+      meeting: false
     }
     this.addMeeting = this.addMeeting.bind(this)
   }
 
   async componentDidMount () {
     console.log('mounted')
-    gun.get('fylkestinget').get('meetings').on(state => {
+    gun.get('fylkestinget').on(state => {
       if (state !== undefined) {
         console.log(state)
-        this.setState({meetings: state})
+        this.setState({meeting: state})
       }
     })
   }
@@ -30,9 +30,14 @@ class Admin extends Component {
   async addMeeting (e) {
     e.preventDefault()
     const meetingUrlField = document.getElementById('meetingUrl')
-    const agenda = await parseAgenda(meetingUrlField.value)
-    console.log(agenda)
-    gun.get('fylkestinget').get('meetings').set(meetingUrlField.value)
+    const urlSplit = meetingUrlField.value.split('/')
+    const meetingId = urlSplit[urlSplit.length - 1]
+    const url = `/api/agenda/${meetingId}`
+    const { data } = await axios(url)
+    // Clears previous data
+    gun.get('fylkestinget').put(null)
+    // Adds new data
+    gun.get('fylkestinget').put(data)
     meetingUrlField.value = ''
   }
 
@@ -40,7 +45,7 @@ class Admin extends Component {
     return (
       <Page username={this.props.user ? this.props.user.userId : null}>
         <AddMeeting addMeeting={this.addMeeting} />
-        <ListMeetings meetings={this.state.meetings} />
+        <ListMeetings meeting={this.state.meeting} />
       </Page>
     )
   }

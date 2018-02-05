@@ -1,5 +1,5 @@
-export default ({ meetings }) => (
-  meetings !== false
-  ? Object.keys(meetings).filter(key => !['_', '#'].includes(key)).map(key => <div>{meetings[key]}</div>)
+export default ({ meeting }) => (
+  meeting !== false
+  ? Object.keys(meeting).filter(key => !['_', '#'].includes(key)).map(key => <div>{key}</div>)
   : null
 )

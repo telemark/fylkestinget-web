@@ -1,7 +1,7 @@
 const Gun = require('gun')
 const os = require('os')
 const micro = require('micro')
-const { json } = micro
+const { send, json } = micro
 const { parse } = require('url')
 const redirect = (res, location, statusCode = 302) => { res.statusCode = statusCode; res.setHeader('Location', location); res.end() }
 const { JWT_SECRET, SESSION_KEY } = require('./secrets')
@@ -17,10 +17,11 @@ const port = parseInt(process.env.PORT, 10) || 3000
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
 const handle = app.getRequestHandler()
+const parseAgenda = require('./lib/parse-agenda')
+const dataFilePath = `${os.tmpdir()}/data.json`
 
 const server = micro(async (req, res) => {
   if (Gun.serve(req, res)) {
-    console.log('Gun req', req)
     res.writeHead(200, {'Content-Type': 'text/html'})
     res.end(req)
     return
@@ -41,13 +42,18 @@ const server = micro(async (req, res) => {
   } else if (pathname.includes('/api/logout')) {
     req.session = null
     redirect(res, AUTH_URL)
+  } else if (pathname.includes('/api/agenda')) {
+    const urlSplit = pathname.split('/')
+    const meetingId = urlSplit[urlSplit.length - 1]
+    const data = await parseAgenda(meetingId)
+    send(res, 200, data)
   } else {
     return handle(req, res)
   }
 })
 
 const gun = Gun({
-  file: `${os.tmpdir()}/data.json`,
+  file: dataFilePath,
   web: server
 })
 
@@ -58,5 +64,6 @@ app.prepare().then(() => {
   server.listen(port, err => {
     if (err) throw err
     console.log(`> Ready on http://localhost:${port}`)
+    console.log(`> data filePath: ${dataFilePath}`)
   })
 })
