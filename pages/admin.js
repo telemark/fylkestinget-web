@@ -4,6 +4,7 @@ import Page from '../components/Page'
 import AddMeeting from '../components/AddMeeting'
 import ListMeetings from '../components/ListMeetings'
 const Gun = require('gun/gun')
+const parseAgenda = require('../lib/parse-agenda')
 const gunURL = process.env.NOW_URL ? `${process.env.NOW_URL}/gun` : 'http://localhost:3000/gun'
 const gun = Gun(gunURL)
 
@@ -26,9 +27,11 @@ class Admin extends Component {
     })
   }
 
-  addMeeting (e) {
+  async addMeeting (e) {
     e.preventDefault()
     const meetingUrlField = document.getElementById('meetingUrl')
+    const agenda = await parseAgenda(meetingUrlField.value)
+    console.log(agenda)
     gun.get('fylkestinget').get('meetings').set(meetingUrlField.value)
     meetingUrlField.value = ''
   }
