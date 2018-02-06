@@ -17,20 +17,10 @@ class Admin extends Component {
       meeting: false
     }
     this.addMeeting = this.addMeeting.bind(this)
-    this.updateMeeting = this.updateMeeting.bind(this)
   }
 
   async componentDidMount () {
     console.log('mounted')
-    gun.get('fylkestinget').on(state => {
-      if (state !== undefined) {
-        console.log(state)
-        this.updateMeeting()
-      }
-    })
-  }
-
-  updateMeeting () {
     gun.get('fylkestinget').open(data => {
       console.log(data)
       this.setState({meeting: repackMeeting(data)})

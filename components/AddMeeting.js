@@ -27,7 +27,7 @@ export default ({ addMeeting }) => (
         }
 
         input {
-          width: 500px;
+          width: 700px;
           height: 40px;
           margin-bottom: 10px;
           font-size: 20px;
