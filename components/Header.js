@@ -8,13 +8,17 @@ export default ({ username = false }) => (
         <img style={{ width: '36px' }} src={COMPANY.logo} />
         {COMPANY.name} - {APP.name}
       </a>
+
       { username
-        ? <span className='right-header'>
+        ? <div className='right-header'>
+            <span>
+              <a href='/admin' >Admin</a>
+            </span>
           <DropDownMenu name={username}>
             <div><a href='/profile'>Profil</a></div>
             <div><a href='/api/logout'>Logg ut</a></div>
           </DropDownMenu>
-        </span>
+          </div>
         : <span className='right-header'>
           <a href={AUTH_URL}>Logg inn</a>
         </span>
@@ -42,6 +46,9 @@ export default ({ username = false }) => (
         }
         .right-header {
           float: right;
+          margin-right: 10px;
+          width: 200px;
+          text-align: right;
         }
       `}
     </style>

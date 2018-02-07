@@ -1,5 +1,7 @@
+import MeetingHeader from './MeetingHeader'
+
 export default ({ meeting }) => (
   meeting !== false
-  ? (<div><div>{meeting.board}</div><div>{meeting.place}</div><div>{meeting.status}</div><div>{meeting.date}</div><div>{meeting.documents.map(doc => <div>{doc.title}</div>)}</div><div>{meeting.agenda.map(agenda => <div>{agenda.title}</div>)}</div></div>)
+  ? <div><MeetingHeader meeting={meeting} />{meeting.documents.map(doc => <div>{doc.title}</div>)}{meeting.agenda.map(agenda => <div>{agenda.title}</div>)}</div>
   : null
 )
