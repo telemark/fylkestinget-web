@@ -1,19 +1,27 @@
-export default ({ addMeeting }) => (
+export default ({ addMeeting, updating }) => (
   <form onSubmit={addMeeting}>
-    <input type='text' name='meetingUrl' id='meetingUrl' placeholder='URL til møte' />
-    <button type='submit'>Importer</button>
+    <input
+      type='text'
+      name='meetingUrl'
+      id='meetingUrl'
+      title='Legg inn URL til møtet i OpenGov'
+      placeholder='URL til møtet i OpenGov'
+      disabled={updating}
+      required='required' />
+    <button type='submit' disabled={updating}>Importer</button>
     <style jsx>
       {`
         button {
           background-color: white;
           border-radius: 2px;
           color: black;
-          padding: 15px 32px;
           text-align: center;
           text-decoration: none;
           display: inline-block;
-          font-size: 16px;
+          padding: 10 px;
+          font-size: 20px;
           width: 150px;
+          height: 40px;
           margin: 10px;
           cursor: pointer;
         }
@@ -29,8 +37,16 @@ export default ({ addMeeting }) => (
         input {
           width: 700px;
           height: 40px;
-          margin-bottom: 10px;
+          margin: 10px;
           font-size: 20px;
+        }
+
+        input:focus {
+          outline:0;
+        }
+        
+        input:active {
+          outline: 0;
         }
       `}
     </style>
