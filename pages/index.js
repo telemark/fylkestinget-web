@@ -21,13 +21,13 @@ class Index extends Component {
     gun.get('fylkestinget').open(data => {
       this.setState({meeting: repackMeeting(data)})
     })
+    console.log(this.state.meeting)
   }
 
   render () {
     return (
       <Page username={this.props.user ? this.props.user.userId : null}>
-        Hello {this.props.user ? this.props.user.userName : 'unknown user'}
-        <ListMeetings meeting={this.state.meeting} />
+        {this.state.meeting !== false ? <ListMeetings meeting={this.state.meeting} /> : 'Ingen møter registrert'}
       </Page>
     )
   }

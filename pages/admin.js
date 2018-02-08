@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Session from '../components/Session'
 import Page from '../components/Page'
 import AddMeeting from '../components/AddMeeting'
+import AddForslag from '../components/AddForslag'
 import ListMeetings from '../components/ListMeetings'
 const axios = require('axios')
 const Gun = require('gun/gun')
@@ -62,6 +63,7 @@ class Admin extends Component {
     return (
       <Page username={this.props.user ? this.props.user.userId : null}>
         <AddMeeting addMeeting={this.addMeeting} updating={this.state.updating} />
+        <AddForslag />
         <ListMeetings meeting={this.state.meeting} />
       </Page>
     )
