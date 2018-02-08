@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 import Session from '../components/Session'
 import Page from '../components/Page'
-import ListMeetings from '../components/ListMeetings'
+import NowPlaying from '../components/NowPlaying'
 const Gun = require('gun/gun')
 require('gun/lib/open')
 const gunURL = process.env.NOW_URL ? `${process.env.NOW_URL}/gun` : 'http://localhost:3000/gun'
 const gun = Gun(gunURL)
 const repackMeeting = require('../lib/repack-meeting')
 
-class Index extends Component {
+class Live extends Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -26,11 +26,10 @@ class Index extends Component {
   render () {
     return (
       <Page username={this.props.user ? this.props.user.userId : null}>
-        Hello {this.props.user ? this.props.user.userName : 'unknown user'}
-        <ListMeetings meeting={this.state.meeting} />
+        <NowPlaying meeting={this.state.meeting} />
       </Page>
     )
   }
 }
 
-export default Session(Index)
+export default Session(Live)

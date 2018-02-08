@@ -34,7 +34,9 @@ class Admin extends Component {
       status: null,
       date: null,
       documents: null,
-      agenda: null
+      agenda: null,
+      forslag: null,
+      now: null
     }
     gun.get('fylkestinget').put(meeting)
   }

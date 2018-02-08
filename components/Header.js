@@ -8,17 +8,23 @@ export default ({ username = false }) => (
         <img style={{ width: '36px' }} src={COMPANY.logo} />
         {COMPANY.name} - {APP.name}
       </a>
+      <span>
+        <a href='/forslag'>Forslag</a>
+      </span>
+      <span>
+        <a href='/live'>Live</a>
+      </span>
 
       { username
         ? <div className='right-header'>
-            <span>
-              <a href='/admin' >Admin</a>
-            </span>
+          <span>
+            <a href='/admin' >Admin</a>
+          </span>
           <DropDownMenu name={username}>
             <div><a href='/profile'>Profil</a></div>
             <div><a href='/api/logout'>Logg ut</a></div>
           </DropDownMenu>
-          </div>
+        </div>
         : <span className='right-header'>
           <a href={AUTH_URL}>Logg inn</a>
         </span>
