@@ -1,15 +1,12 @@
-export default ({ addMeeting, updating, toggleImport }) => (
-  <form onSubmit={addMeeting}>
-    <input
-      type='text'
-      name='meetingUrl'
-      id='meetingUrl'
-      title='Legg inn URL til møtet i OpenGov'
-      placeholder='URL til møtet i OpenGov'
-      disabled={updating}
-      required='required' />
-    <button onClick={toggleImport}>Avbryt</button>
-    <button type='submit' disabled={updating}>Importer</button>
+import AddForslag from './AddForslag'
+import AddMeeting from './AddMeeting'
+
+export default ({doAddForslag, doAddMeeting, toggleImport, toggleForslag, addMeeting, addForslag, updating, meeting}) => (
+  <div>
+    {doAddMeeting !== true ? <button onClick={toggleImport}>Importer møte</button> : null}
+    {doAddForslag !== true ? <button onClick={toggleForslag}>Registrer forslag</button> : null}
+    {doAddMeeting === true ? <AddMeeting addMeeting={addMeeting} updating={updating} toggleImport={toggleImport} /> : null}
+    {doAddForslag === true ? <AddForslag addForslag={addForslag} agenda={meeting.agenda} updating={updating} toggleForslag={toggleForslag} /> : null}
     <style jsx>
       {`
         button {
@@ -21,7 +18,7 @@ export default ({ addMeeting, updating, toggleImport }) => (
           display: inline-block;
           padding: 10 px;
           font-size: 20px;
-          width: 150px;
+          width: 175px;
           height: 40px;
           margin: 10px;
           cursor: pointer;
@@ -51,5 +48,5 @@ export default ({ addMeeting, updating, toggleImport }) => (
         }
       `}
     </style>
-  </form>
+  </div>
 )

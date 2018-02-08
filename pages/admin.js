@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import Session from '../components/Session'
 import Page from '../components/Page'
-import AddMeeting from '../components/AddMeeting'
-import AddForslag from '../components/AddForslag'
+import AdminDashboard from '../components/AdminDashboard'
 import ListMeetings from '../components/ListMeetings'
 const axios = require('axios')
 const Gun = require('gun/gun')
@@ -16,10 +15,15 @@ class Admin extends Component {
     super(props)
     this.state = {
       meeting: false,
-      updating: false
+      updating: false,
+      doAddMeeting: false,
+      doAddForslag: false
     }
     this.addMeeting = this.addMeeting.bind(this)
     this.cleanUpMeeting = this.cleanUpMeeting.bind(this)
+    this.addForslag = this.addMeeting.bind(this)
+    this.toggleImport = this.toggleImport.bind(this)
+    this.toggleForslag = this.toggleForslag.bind(this)
   }
 
   async componentDidMount () {
@@ -42,7 +46,34 @@ class Admin extends Component {
     gun.get('fylkestinget').put(meeting)
   }
 
+  toggleImport () {
+    const newState = !this.state.doAddMeeting
+    this.setState({doAddMeeting: newState})
+  }
+
+  toggleForslag () {
+    const newState = !this.state.doAddForslag
+    this.setState({doAddForslag: newState})
+  }
+
   async addMeeting (e) {
+    e.preventDefault()
+    this.setState({updating: true})
+    // Removes data
+    this.cleanUpMeeting()
+    // Retrieves new data
+    const meetingUrlField = document.getElementById('meetingUrl')
+    const urlSplit = meetingUrlField.value.split('/')
+    const meetingId = urlSplit[urlSplit.length - 1]
+    const url = `/api/agenda/${meetingId}`
+    const { data } = await axios(url)
+    // Adds new data
+    gun.get('fylkestinget').put(data)
+    meetingUrlField.value = ''
+    this.setState({updating: false})
+  }
+
+  async addForslag (e) {
     e.preventDefault()
     this.setState({updating: true})
     // Removes data
@@ -62,8 +93,15 @@ class Admin extends Component {
   render () {
     return (
       <Page username={this.props.user ? this.props.user.userId : null}>
-        <AddMeeting addMeeting={this.addMeeting} updating={this.state.updating} />
-        <AddForslag />
+        <AdminDashboard
+          doAddForslag={this.state.doAddForslag}
+          doAddMeeting={this.state.doAddMeeting}
+          toggleImport={this.toggleImport}
+          toggleForslag={this.toggleForslag}
+          addMeeting={this.addMeeting}
+          addForslag={this.addForslag}
+          updating={this.state.updating}
+          meeting={this.state.meeting} />
         <ListMeetings meeting={this.state.meeting} />
       </Page>
     )

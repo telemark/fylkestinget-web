@@ -1,8 +1,8 @@
-export default () => (
-  <form>
+export default ({addForslag, agenda, updating, toggleForslag}) => (
+  <form onSubmit={addForslag}>
     <input type='text' id='from' placeholder='Forslagsstiller' required />
     <textarea id='proposal' placeholder='Forslagstekst' required />
-    <button type='submit'>Legg til</button>
+    <button onClick={toggleForslag}>Avbryt</button><button type='submit'>Legg til</button>
     <style jsx>
       {`
         button {
