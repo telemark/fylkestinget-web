@@ -17,7 +17,8 @@ class Admin extends Component {
       meeting: false,
       updating: false,
       doAddMeeting: false,
-      doAddForslag: false
+      doAddForslag: false,
+      adminView: true
     }
     this.addMeeting = this.addMeeting.bind(this)
     this.cleanUpMeeting = this.cleanUpMeeting.bind(this)
@@ -102,7 +103,7 @@ class Admin extends Component {
           addForslag={this.addForslag}
           updating={this.state.updating}
           meeting={this.state.meeting} />
-        <ListMeetings meeting={this.state.meeting} />
+        <ListMeetings meeting={this.state.meeting} adminView={this.state.adminView} />
       </Page>
     )
   }

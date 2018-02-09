@@ -1,13 +1,19 @@
-export default ({item}) => (
+export default ({ item, adminView }) => (
   <div className={'wrapper'}>
     <h2>{item.agendanumber} - {item.title}</h2>
     <div>
       <a href={`http://opengov.cloudapp.net/Meetings/tfk/AgendaItems/Details/${item.id}`} target='_blank' className={'button'}>Se dokumenter</a>
-      <a href={`mailto:forslag@t-fk.no?subject=Forslag sak ${item.agendanumber}`} target='_blank' className={'button'}>Lever forslag</a>
-      <button className={'button'} data-agenda-item={item.id}>Behandles nå</button>
+      {adminView !== true ? <a href={`mailto:forslag@t-fk.no?subject=Forslag sak ${item.agendanumber}`} target='_blank' className={'button'}>Lever forslag</a> : null}
+      {adminView === true ? <button className={'button'} data-agenda-item={item.id}>Registrer forslag</button> : null}
+      {adminView === true ? <button className={'button'} data-agenda-item={item.id}>Behandles nå</button> : null}
     </div>
     <style jsx>
       {`
+        a {
+          padding: 0px;
+          margin: 0px;
+          font-size: 20px;
+        }
         .wrapper {
           text-align: left;
           padding: 10px;
@@ -26,9 +32,10 @@ export default ({item}) => (
           text-decoration: none;
           display: inline-block;
           font-size: 20px;
-          width: 150px;
-          height: 40px;
+          width: 175px;
+          height: 50px;
           margin: 10px;
+          padding: 10px;
           cursor: pointer;
         }
       `}
