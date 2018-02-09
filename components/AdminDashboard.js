@@ -4,7 +4,6 @@ import AddMeeting from './AddMeeting'
 export default ({doAddForslag, doAddMeeting, toggleImport, toggleForslag, addMeeting, addForslag, updating, meeting}) => (
   <div>
     {doAddMeeting !== true ? <button onClick={toggleImport}>Importer møte</button> : null}
-    {doAddForslag !== true ? <button onClick={toggleForslag}>Registrer forslag</button> : null}
     {doAddMeeting === true ? <AddMeeting addMeeting={addMeeting} updating={updating} toggleImport={toggleImport} /> : null}
     {doAddForslag === true ? <AddForslag addForslag={addForslag} agenda={meeting.agenda} updating={updating} toggleForslag={toggleForslag} /> : null}
     <style jsx>

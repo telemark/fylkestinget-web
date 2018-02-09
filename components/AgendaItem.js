@@ -1,10 +1,10 @@
-export default ({ item, adminView }) => (
+export default ({ item, adminView, toggleForslag }) => (
   <div className={'wrapper'}>
     <h2>{item.agendanumber} - {item.title}</h2>
     <div>
       <a href={`http://opengov.cloudapp.net/Meetings/tfk/AgendaItems/Details/${item.id}`} target='_blank' className={'button'}>Se dokumenter</a>
       {adminView !== true ? <a href={`mailto:forslag@t-fk.no?subject=Forslag sak ${item.agendanumber}`} target='_blank' className={'button'}>Lever forslag</a> : null}
-      {adminView === true ? <button className={'button'} data-agenda-item={item.id}>Registrer forslag</button> : null}
+      {adminView === true ? <button className={'button'} data-agenda-item={item.id} onClick={toggleForslag} >Registrer forslag</button> : null}
       {adminView === true ? <button className={'button'} data-agenda-item={item.id}>Behandles nå</button> : null}
     </div>
     <style jsx>
@@ -26,16 +26,15 @@ export default ({ item, adminView }) => (
         .button {
           background-color: white;
           border-radius: 2px;
-          border: 1px solid black;
           color: black;
           text-align: center;
           text-decoration: none;
           display: inline-block;
+          padding: 10 px;
           font-size: 20px;
           width: 175px;
-          height: 50px;
+          height: 40px;
           margin: 10px;
-          padding: 10px;
           cursor: pointer;
         }
       `}

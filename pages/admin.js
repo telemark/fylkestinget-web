@@ -3,9 +3,9 @@ import Session from '../components/Session'
 import Page from '../components/Page'
 import AdminDashboard from '../components/AdminDashboard'
 import ListMeetings from '../components/ListMeetings'
+import Gun from 'gun/gun'
+import 'gun/lib/open'
 const axios = require('axios')
-const Gun = require('gun/gun')
-require('gun/lib/open')
 const gunURL = process.env.NOW_URL ? `${process.env.NOW_URL}/gun` : 'http://localhost:3000/gun'
 const gun = Gun(gunURL)
 const repackMeeting = require('../lib/repack-meeting')
@@ -18,7 +18,8 @@ class Admin extends Component {
       updating: false,
       doAddMeeting: false,
       doAddForslag: false,
-      adminView: true
+      adminView: true,
+      activeAgendaId: false
     }
     this.addMeeting = this.addMeeting.bind(this)
     this.cleanUpMeeting = this.cleanUpMeeting.bind(this)
@@ -52,9 +53,11 @@ class Admin extends Component {
     this.setState({doAddMeeting: newState})
   }
 
-  toggleForslag () {
+  toggleForslag (e) {
+    e.preventDefault()
     const newState = !this.state.doAddForslag
-    this.setState({doAddForslag: newState})
+    const agendaId = e.target.dataset ? e.target.dataset.agendaItem : false
+    this.setState({doAddForslag: newState, activeAgendaId: agendaId})
   }
 
   async addMeeting (e) {
@@ -77,18 +80,21 @@ class Admin extends Component {
   async addForslag (e) {
     e.preventDefault()
     this.setState({updating: true})
-    // Removes data
-    this.cleanUpMeeting()
     // Retrieves new data
-    const meetingUrlField = document.getElementById('meetingUrl')
-    const urlSplit = meetingUrlField.value.split('/')
-    const meetingId = urlSplit[urlSplit.length - 1]
-    const url = `/api/agenda/${meetingId}`
-    const { data } = await axios(url)
+    const fromField = document.getElementById('from')
+    const proposalField = document.getElementById('proposal')
+    const agendaId = this.state.activeAgendaId
+    const data = {
+      agendaId: agendaId,
+      from: fromField.value,
+      propsal: proposalField.value,
+      show: false
+    }
     // Adds new data
-    gun.get('fylkestinget').put(data)
-    meetingUrlField.value = ''
-    this.setState({updating: false})
+    gun.get('fylkestinget').get('forslag').set(data)
+    fromField.value = ''
+    proposalField.value = ''
+    this.setState({updating: false, activeAgendaId: false})
   }
 
   render () {
@@ -103,7 +109,11 @@ class Admin extends Component {
           addForslag={this.addForslag}
           updating={this.state.updating}
           meeting={this.state.meeting} />
-        <ListMeetings meeting={this.state.meeting} adminView={this.state.adminView} />
+        {this.state.doAddForslag !== true
+          ? <ListMeetings
+            meeting={this.state.meeting}
+            adminView={this.state.adminView}
+            toggleForslag={this.toggleForslag} /> : null}
       </Page>
     )
   }
