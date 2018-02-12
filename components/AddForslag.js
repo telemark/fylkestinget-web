@@ -1,5 +1,18 @@
-export default ({addForslag, agenda, updating, toggleForslag}) => (
+function getAgendaTitle (meeting, activeAgendaId) {
+  let title = ''
+  if (meeting && meeting.agenda) {
+    if (activeAgendaId) {
+      const filteredAgenda = meeting.agenda.filter(item => item.id === activeAgendaId)
+      const agenda = filteredAgenda[0]
+      title = `${agenda.agendanumber} - ${agenda.title}`
+    }
+  }
+  return (<h1>{title}</h1>)
+}
+
+export default ({addForslag, meeting, updating, toggleForslag, activeAgendaId}) => (
   <form onSubmit={addForslag}>
+    {getAgendaTitle(meeting, activeAgendaId)}
     <input type='text' id='from' placeholder='Forslagsstiller' required />
     <textarea id='proposal' placeholder='Forslagstekst' required />
     <button onClick={toggleForslag}>Avbryt</button><button type='submit'>Legg til</button>

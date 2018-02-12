@@ -5,6 +5,7 @@ import AdminDashboard from '../components/AdminDashboard'
 import ListMeetings from '../components/ListMeetings'
 import Gun from 'gun/gun'
 import 'gun/lib/open'
+import { v4 as uuid } from 'uuid'
 const axios = require('axios')
 const gunURL = process.env.NOW_URL ? `${process.env.NOW_URL}/gun` : 'http://localhost:3000/gun'
 const gun = Gun(gunURL)
@@ -19,8 +20,7 @@ class Admin extends Component {
       doAddMeeting: false,
       doAddForslag: false,
       adminView: true,
-      activeAgendaId: false,
-      nowPlaying: null
+      activeAgendaId: false
     }
     this.addMeeting = this.addMeeting.bind(this)
     this.cleanUpMeeting = this.cleanUpMeeting.bind(this)
@@ -44,7 +44,7 @@ class Admin extends Component {
       documents: null,
       agenda: null,
       forslag: null,
-      nowPlaying: null
+      now: null
     }
     gun.get('fylkestinget').put(meeting)
   }
@@ -75,13 +75,13 @@ class Admin extends Component {
     // Adds new data
     gun.get('fylkestinget').put(data)
     meetingUrlField.value = ''
-    this.setState({updating: false})
+    this.setState({updating: false, doAddMeeting: false})
   }
 
   async setNowPlaying (e) {
     e.preventDefault()
     const agendaId = e.target.dataset.agendaItem
-    this.setState({nowPlaying: agendaId})
+    gun.get('fylkestinget').put({now: agendaId})
   }
 
   async addForslag (e) {
@@ -91,17 +91,20 @@ class Admin extends Component {
     const fromField = document.getElementById('from')
     const proposalField = document.getElementById('proposal')
     const agendaId = this.state.activeAgendaId
+    const id = uuid()
     const data = {
       agendaId: agendaId,
       from: fromField.value,
-      propsal: proposalField.value,
-      show: false
+      proposal: proposalField.value,
+      show: false,
+      id: id
     }
     // Adds new data
+    console.log(data)
     gun.get('fylkestinget').get('forslag').set(data)
     fromField.value = ''
     proposalField.value = ''
-    this.setState({updating: false, activeAgendaId: false})
+    this.setState({updating: false, activeAgendaId: false, doAddForslag: false})
   }
 
   render () {
@@ -115,7 +118,8 @@ class Admin extends Component {
           addMeeting={this.addMeeting}
           addForslag={this.addForslag}
           updating={this.state.updating}
-          meeting={this.state.meeting} />
+          meeting={this.state.meeting}
+          activeAgendaId={this.state.activeAgendaId} />
         {this.state.doAddForslag !== true
           ? <ListMeetings
             meeting={this.state.meeting}

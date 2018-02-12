@@ -1,11 +1,11 @@
 import AddForslag from './AddForslag'
 import AddMeeting from './AddMeeting'
 
-export default ({doAddForslag, doAddMeeting, toggleImport, toggleForslag, addMeeting, addForslag, updating, meeting}) => (
+export default ({doAddForslag, doAddMeeting, toggleImport, toggleForslag, addMeeting, addForslag, updating, meeting, activeAgendaId}) => (
   <div>
     {doAddMeeting !== true ? <button onClick={toggleImport}>Importer møte</button> : null}
     {doAddMeeting === true ? <AddMeeting addMeeting={addMeeting} updating={updating} toggleImport={toggleImport} /> : null}
-    {doAddForslag === true ? <AddForslag addForslag={addForslag} agenda={meeting.agenda} updating={updating} toggleForslag={toggleForslag} /> : null}
+    {doAddForslag === true ? <AddForslag addForslag={addForslag} meeting={meeting} updating={updating} toggleForslag={toggleForslag} activeAgendaId={activeAgendaId} /> : null}
     <style jsx>
       {`
         button {

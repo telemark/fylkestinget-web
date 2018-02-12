@@ -14,9 +14,13 @@ const monthNames = {
 }
 
 function formatDate (date) {
-  const dateList = date.split('.')
+  let out = ''
+  if (date) {
+    const dateList = date.split('.')
+    out = `${dateList[0]}. ${monthNames[dateList[1]]} ${dateList[2]}`
+  }
 
-  return `${dateList[0]}. ${monthNames[dateList[1]]} ${dateList[2]}`
+  return out
 }
 
 export default ({meeting}) => (
