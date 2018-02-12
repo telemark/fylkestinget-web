@@ -1,11 +1,21 @@
-export default ({ item, adminView, toggleForslag }) => (
+function isActive (meeting, item) {
+  let state = 'button'
+  if (meeting && item) {
+    if (meeting.nowPlaying === item.id) {
+      state = 'button nowPlaying'
+    }
+  }
+  return state
+}
+
+export default ({ meeting, item, adminView, toggleForslag, setNowPlaying }) => (
   <div className={'wrapper'}>
     <h2>{item.agendanumber} - {item.title}</h2>
     <div>
       <a href={`http://opengov.cloudapp.net/Meetings/tfk/AgendaItems/Details/${item.id}`} target='_blank' className={'button'}>Se dokumenter</a>
       {adminView !== true ? <a href={`mailto:forslag@t-fk.no?subject=Forslag sak ${item.agendanumber}`} target='_blank' className={'button'}>Lever forslag</a> : null}
-      {adminView === true ? <button className={'button'} data-agenda-item={item.id} onClick={toggleForslag} >Registrer forslag</button> : null}
-      {adminView === true ? <button className={'button'} data-agenda-item={item.id}>Behandles nå</button> : null}
+      {adminView === true ? <button className={isActive(meeting, item)} data-agenda-item={item.id} onClick={toggleForslag} >Registrer forslag</button> : null}
+      {adminView === true ? <button className={'button'} data-agenda-item={item.id} onClick={setNowPlaying} >Behandles nå</button> : null}
     </div>
     <style jsx>
       {`
@@ -36,6 +46,10 @@ export default ({ item, adminView, toggleForslag }) => (
           height: 40px;
           margin: 10px;
           cursor: pointer;
+        }
+
+        .nowPlaying {
+          background-color: yellow;
         }
       `}
     </style>

@@ -1,5 +1,5 @@
 import AgendaItem from './AgendaItem'
 
-export default ({ agenda, adminView, toggleForslag }) => (
-  agenda ? agenda.map(item => <AgendaItem item={item} adminView={adminView} toggleForslag={toggleForslag} />) : null
+export default ({ meeting, adminView, toggleForslag, setNowPlaying }) => (
+  meeting && meeting.agenda ? meeting.agenda.map(item => <AgendaItem meeting={meeting} item={item} adminView={adminView} toggleForslag={toggleForslag} setNowPlaying={setNowPlaying} />) : null
 )

@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import Session from '../components/Session'
 import Page from '../components/Page'
 import ListMeetings from '../components/ListMeetings'
-const Gun = require('gun/gun')
-require('gun/lib/open')
+import Gun from 'gun/gun'
+import 'gun/lib/open'
 const gunURL = process.env.NOW_URL ? `${process.env.NOW_URL}/gun` : 'http://localhost:3000/gun'
 const gun = Gun(gunURL)
 const repackMeeting = require('../lib/repack-meeting')

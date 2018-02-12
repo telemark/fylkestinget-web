@@ -19,17 +19,18 @@ class Admin extends Component {
       doAddMeeting: false,
       doAddForslag: false,
       adminView: true,
-      activeAgendaId: false
+      activeAgendaId: false,
+      nowPlaying: null
     }
     this.addMeeting = this.addMeeting.bind(this)
     this.cleanUpMeeting = this.cleanUpMeeting.bind(this)
     this.addForslag = this.addMeeting.bind(this)
+    this.setNowPlaying = this.setNowPlaying.bind(this)
     this.toggleImport = this.toggleImport.bind(this)
     this.toggleForslag = this.toggleForslag.bind(this)
   }
 
   async componentDidMount () {
-    console.log('mounted')
     gun.get('fylkestinget').open(data => {
       this.setState({meeting: repackMeeting(data)})
     })
@@ -43,7 +44,7 @@ class Admin extends Component {
       documents: null,
       agenda: null,
       forslag: null,
-      now: null
+      nowPlaying: null
     }
     gun.get('fylkestinget').put(meeting)
   }
@@ -75,6 +76,12 @@ class Admin extends Component {
     gun.get('fylkestinget').put(data)
     meetingUrlField.value = ''
     this.setState({updating: false})
+  }
+
+  async setNowPlaying (e) {
+    e.preventDefault()
+    const agendaId = e.target.dataset.agendaItem
+    this.setState({nowPlaying: agendaId})
   }
 
   async addForslag (e) {
@@ -113,7 +120,8 @@ class Admin extends Component {
           ? <ListMeetings
             meeting={this.state.meeting}
             adminView={this.state.adminView}
-            toggleForslag={this.toggleForslag} /> : null}
+            toggleForslag={this.toggleForslag}
+            setNowPlaying={this.setNowPlaying} /> : null}
       </Page>
     )
   }
