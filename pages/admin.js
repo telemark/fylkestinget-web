@@ -24,10 +24,12 @@ class Admin extends Component {
     }
     this.addMeeting = this.addMeeting.bind(this)
     this.cleanUpMeeting = this.cleanUpMeeting.bind(this)
-    this.addForslag = this.addMeeting.bind(this)
+    this.addForslag = this.addForslag.bind(this)
     this.setNowPlaying = this.setNowPlaying.bind(this)
     this.toggleImport = this.toggleImport.bind(this)
     this.toggleForslag = this.toggleForslag.bind(this)
+    this.toggleShowForslag = this.toggleShowForslag.bind(this)
+    this.deleteForslag = this.deleteForslag.bind(this)
   }
 
   async componentDidMount () {
@@ -55,6 +57,20 @@ class Admin extends Component {
   }
 
   toggleForslag (e) {
+    e.preventDefault()
+    const newState = !this.state.doAddForslag
+    const agendaId = e.target.dataset ? e.target.dataset.agendaItem : false
+    this.setState({doAddForslag: newState, activeAgendaId: agendaId})
+  }
+
+  async toggleShowForslag (e) {
+    e.preventDefault()
+    const newState = !this.state.doAddForslag
+    const agendaId = e.target.dataset ? e.target.dataset.agendaItem : false
+    this.setState({doAddForslag: newState, activeAgendaId: agendaId})
+  }
+
+  async deleteForslag (e) {
     e.preventDefault()
     const newState = !this.state.doAddForslag
     const agendaId = e.target.dataset ? e.target.dataset.agendaItem : false
@@ -125,7 +141,9 @@ class Admin extends Component {
             meeting={this.state.meeting}
             adminView={this.state.adminView}
             toggleForslag={this.toggleForslag}
-            setNowPlaying={this.setNowPlaying} /> : null}
+            setNowPlaying={this.setNowPlaying}
+            toggleShowForslag={this.toggleShowForslag}
+            deleteForslag={this.deleteForslag} /> : null}
       </Page>
     )
   }

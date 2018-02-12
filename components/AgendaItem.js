@@ -1,6 +1,7 @@
+import AgendaItemListForslag from './AgendaItemListForslag'
 import { COLORS } from '../config'
 
-export default ({ meeting, item, adminView, toggleForslag, setNowPlaying }) => (
+export default ({ meeting, item, adminView, toggleForslag, setNowPlaying, toggleShowForslag, deleteForslag }) => (
   <div className={'wrapper'}>
     <h2>{item.agendanumber} - {item.title}</h2>
     <div>
@@ -9,6 +10,12 @@ export default ({ meeting, item, adminView, toggleForslag, setNowPlaying }) => (
       {adminView === true ? <button className={'button'} data-agenda-item={item.id} onClick={toggleForslag} >Registrer forslag</button> : null}
       {adminView === true ? <button className={meeting.now === item.id ? 'button nowPlaying' : 'button'} data-agenda-item={item.id} onClick={setNowPlaying} >Behandles nå</button> : null}
     </div>
+    <AgendaItemListForslag
+      meeting={meeting}
+      item={item}
+      adminView={adminView}
+      toggleShowForslag={toggleShowForslag}
+      deleteForslag={deleteForslag} />
     <style jsx>
       {`
         a {
