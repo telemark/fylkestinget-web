@@ -4,7 +4,7 @@ import { COLORS } from '../config'
 export default ({ meeting, item, adminView, toggleForslag, setNowPlaying, toggleShowForslag, deleteForslag }) => (
   <div className={'wrapper'}>
     <h2>{item.agendanumber} - {item.title}</h2>
-    <div>
+    <div className='item'>
       <a href={`http://opengov.cloudapp.net/Meetings/tfk/AgendaItems/Details/${item.id}`} target='_blank' className={'button'}>Se dokumenter</a>
       {adminView !== true ? <a href={`mailto:forslag@t-fk.no?subject=Forslag sak ${item.agendanumber}`} target='_blank' className={'button'}>Lever forslag</a> : null}
       {adminView === true ? <button className={'button'} data-agenda-item={item.id} onClick={toggleForslag} >Registrer forslag</button> : null}
@@ -22,6 +22,9 @@ export default ({ meeting, item, adminView, toggleForslag, setNowPlaying, toggle
           padding: 0px;
           margin: 0px;
           font-size: 20px;
+        }
+        .item {
+          display: flex;
         }
         .wrapper {
           text-align: left;
@@ -50,7 +53,7 @@ export default ({ meeting, item, adminView, toggleForslag, setNowPlaying, toggle
         .button:focus {
           outline:0;
         }
-        
+
         .button:active {
           outline: 0;
         }

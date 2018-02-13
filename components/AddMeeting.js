@@ -30,7 +30,7 @@ export default ({ addMeeting, updating, toggleImport }) => (
         button:focus {
           outline:0;
         }
-        
+
         button:active {
           outline: 0;
         }
@@ -45,7 +45,7 @@ export default ({ addMeeting, updating, toggleImport }) => (
         input:focus {
           outline:0;
         }
-        
+
         input:active {
           outline: 0;
         }

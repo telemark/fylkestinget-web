@@ -26,7 +26,7 @@ export default ({doAddForslag, doAddMeeting, toggleImport, toggleForslag, addMee
         button:focus {
           outline:0;
         }
-        
+
         button:active {
           outline: 0;
         }
@@ -41,7 +41,7 @@ export default ({doAddForslag, doAddMeeting, toggleImport, toggleForslag, addMee
         input:focus {
           outline:0;
         }
-        
+
         input:active {
           outline: 0;
         }

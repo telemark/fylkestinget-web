@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import DropDownMenu from './DropDownMenu'
 import { AUTH_URL, COMPANY, COLORS, APP } from '../config'
 
@@ -10,12 +9,12 @@ export default ({ username = false }) => (
           <img style={{ width: '36px' }} src={COMPANY.logo} />
         </a>
       </li>
-      <li>{COMPANY.name} - {APP.name}</li>
+      <li><span className='company-name'>{COMPANY.name} -</span> {APP.name}</li>
     </ul>
     { username
       ? <ul className={'right'}>
-        <li><Link href='/forslag'><a>Forslag</a></Link></li>
-        <li><Link href='/live'><a>Live</a></Link></li>
+        <li><a href='/forslag'>Forslag</a></li>
+        <li><a href='/live'>Live</a></li>
         <li>
           <DropDownMenu name={username}>
             <div><a href='/admin'>Administrasjon</a></div>
@@ -25,9 +24,9 @@ export default ({ username = false }) => (
         </li>
       </ul>
       : <ul className={'right'}>
-        <li><Link href='/forslag'><a>Forslag</a></Link></li>
-        <li><Link href='/live'><a>Live</a></Link></li>
-        <li><Link href={AUTH_URL}><a>Logg inn</a></Link></li>
+        <li><a href='/forslag'>Forslag</a></li>
+        <li><a href='/live'>Live</a></li>
+        <li><a href={AUTH_URL}>Logg inn</a></li>
       </ul>
     }
     <style jsx>{`
@@ -69,6 +68,10 @@ export default ({ username = false }) => (
         color: #6AC4AE;
         text-decoration: underline;
       }
+      @media screen and (max-width: 800px) {
+        .company-name {
+          display: none;
+        }
     `}
     </style>
   </nav>

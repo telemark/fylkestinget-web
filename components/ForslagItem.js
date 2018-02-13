@@ -27,7 +27,7 @@ export default ({ data, index, adminView, toggleShowForslag, deleteForslag }) =>
         button:focus {
           outline:0;
         }
-        
+
         button:active {
           outline: 0;
         }

@@ -36,7 +36,7 @@ export default ({addForslag, meeting, updating, toggleForslag, activeAgendaId}) 
         button:focus {
           outline:0;
         }
-        
+
         button:active {
           outline: 0;
         }
@@ -51,7 +51,7 @@ export default ({addForslag, meeting, updating, toggleForslag, activeAgendaId}) 
         input:focus {
           outline:0;
         }
-        
+
         input:active {
           outline: 0;
         }
@@ -66,7 +66,7 @@ export default ({addForslag, meeting, updating, toggleForslag, activeAgendaId}) 
         textarea:focus {
           outline:0;
         }
-        
+
         textarea:active {
           outline: 0;
         }
