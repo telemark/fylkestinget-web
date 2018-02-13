@@ -13,6 +13,7 @@ export default ({ username = false }) => (
     </ul>
     { username
       ? <ul className={'right'}>
+        <li><a href='/'>Forsiden</a></li>
         <li><a href='/forslag'>Forslag</a></li>
         <li><a href='/live'>Live</a></li>
         <li><a href='/admin'>Administrasjon</a></li>

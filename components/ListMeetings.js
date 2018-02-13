@@ -3,6 +3,6 @@ import AgendaItems from './AgendaItems'
 
 export default ({ meeting, adminView, toggleForslag, setNowPlaying, toggleShowForslag, deleteForslag }) => (
   meeting !== false
-  ? <div><MeetingHeader meeting={meeting} />{meeting.documents.map(doc => <div key='{doc.refId}'>{doc.title}</div>)}<AgendaItems meeting={meeting} adminView={adminView} toggleForslag={toggleForslag} setNowPlaying={setNowPlaying} toggleShowForslag={toggleShowForslag} deleteForslag={deleteForslag} /></div>
+  ? <div><MeetingHeader meeting={meeting} />{meeting.documents.map(doc => <div key={doc.refId}>{doc.title}</div>)}<AgendaItems meeting={meeting} adminView={adminView} toggleForslag={toggleForslag} setNowPlaying={setNowPlaying} toggleShowForslag={toggleShowForslag} deleteForslag={deleteForslag} /></div>
   : null
 )
