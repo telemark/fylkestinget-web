@@ -5,7 +5,7 @@ import AdminDashboard from '../components/AdminDashboard'
 import ListMeetings from '../components/ListMeetings'
 import Gun from 'gun/gun'
 import 'gun/lib/open'
-import { v4 as uuid } from 'uuid'
+
 const axios = require('axios')
 const gunURL = process.env.NOW_URL ? `${process.env.NOW_URL}/gun` : 'http://localhost:3000/gun'
 const gun = Gun(gunURL)
@@ -110,16 +110,14 @@ class Admin extends Component {
     const fromField = document.getElementById('from')
     const proposalField = document.getElementById('proposal')
     const agendaId = this.state.activeAgendaId
-    const id = uuid()
     const data = {
       agendaId: agendaId,
       from: fromField.value,
       proposal: proposalField.value,
-      show: false,
-      id: id
+      timeStamp: new Date().getTime(),
+      show: false
     }
     // Adds new data
-    console.log(data)
     gun.get('fylkestinget').get('forslag').set(data)
     fromField.value = ''
     proposalField.value = ''

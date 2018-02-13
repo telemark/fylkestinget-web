@@ -1,15 +1,23 @@
+import AgendaItem from './AgendaItem'
+
 function repackForslag (meeting) {
   if (meeting.agenda && meeting.forslag) {
     const agenda = meeting.agenda.map(agenda => {
-      const forslag = meeting.forslag.filter(forslag => forslag.agendaId === agenda.id)
+      const forslag = meeting.forslag.filter(forslag => forslag.agendaId === agenda.id).filter(forslag => forslag.show === true)
       return Object.assign({}, agenda, {forslag: forslag})
     })
-    return agenda
+    const filteredAgenda = agenda.filter(agenda => agenda.forslag.length > 0)
+    return filteredAgenda
   } else {
     return []
   }
 }
 
 export default ({ meeting }) => (
-  meeting !== false && meeting.forslag ? meeting.forslag : 'Det er ikke registrert noen forslag ennå'
+  <div>
+    <h1>Oversikt over innkommede forslag</h1>
+    {meeting !== false && meeting.agenda && meeting.forslag
+    ? repackForslag(meeting).map(item => <AgendaItem meeting={meeting} item={item} />)
+    : 'Det er ikke registrert noen forslag ennå'}
+  </div>
 )
