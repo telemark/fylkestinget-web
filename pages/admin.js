@@ -65,16 +65,19 @@ class Admin extends Component {
 
   async toggleShowForslag (e) {
     e.preventDefault()
-    const newState = !this.state.doAddForslag
-    const agendaId = e.target.dataset ? e.target.dataset.agendaItem : false
-    this.setState({doAddForslag: newState, activeAgendaId: agendaId})
+    const refId = e.target.dataset.refId
+    const nowState = e.target.dataset.showState
+    let showState = false
+    if (nowState === 'false') {
+      showState = true
+    }
+    gun.get('fylkestinget').get('forslag').get(refId).get('show').put(showState)
   }
 
   async deleteForslag (e) {
     e.preventDefault()
-    const newState = !this.state.doAddForslag
-    const agendaId = e.target.dataset ? e.target.dataset.agendaItem : false
-    this.setState({doAddForslag: newState, activeAgendaId: agendaId})
+    const refId = e.target.dataset.refId
+    gun.get('fylkestinget').get('forslag').get(refId).put(null)
   }
 
   async addMeeting (e) {

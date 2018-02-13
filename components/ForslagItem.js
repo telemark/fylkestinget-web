@@ -2,7 +2,7 @@ import { COLORS } from '../config'
 
 export default ({ data, index, adminView, toggleShowForslag, deleteForslag }) => (
   <div>
-    <h2>{index}</h2>
+    <h2>{index + 1}</h2>
     <div>{data.from}</div>
     <div>{data.proposal}</div>
     {adminView === true ? <button data-ref-id={data.refId} onClick={deleteForslag}>Slett</button> : null}

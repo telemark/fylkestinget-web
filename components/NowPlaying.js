@@ -5,7 +5,7 @@ function renderAgenda (meeting) {
     agenda = filteredAgenda[0]
   }
   if (meeting && meeting.forslag) {
-    const filteredForslag = meeting.forslag.filter(item => item.agendaId === meeting.now).filter(forslag => forslag.show === false)
+    const filteredForslag = meeting.forslag.filter(item => item.agendaId === meeting.now).filter(forslag => forslag.show === true)
     agenda.forslag = filteredForslag
   }
   return agenda !== false
