@@ -1,10 +1,11 @@
 import Layout from './Layout'
-import Header from './Header'
+// import Header from './Header'
+import Navbar from './Navbar'
 import Main from './Main'
 
 export default ({ username, children }) => (
   <Layout>
-    <Header username={username} />
+    <Navbar username={username} />
     <Main>
       { children }
     </Main>

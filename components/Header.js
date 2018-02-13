@@ -3,7 +3,7 @@ import { AUTH_URL, COMPANY, COLORS, APP } from '../config'
 
 export default ({ username = false }) => (
   <header>
-    <div className='inner-header'>
+    <nav className='inner-header'>
       <a href='/'>
         <img style={{ width: '36px' }} src={COMPANY.logo} />
         {COMPANY.name} - {APP.name}
@@ -29,7 +29,7 @@ export default ({ username = false }) => (
           <a href={AUTH_URL}>Logg inn</a>
         </span>
       }
-    </div>
+    </nav>
     <style jsx>
       {`
         header {
