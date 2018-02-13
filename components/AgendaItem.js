@@ -6,9 +6,9 @@ export default ({ meeting, item, adminView, toggleForslag, setNowPlaying, toggle
     <h2>{item.agendanumber} - {item.title}</h2>
     <div className='item'>
       <a href={`http://opengov.cloudapp.net/Meetings/tfk/AgendaItems/Details/${item.id}`} target='_blank' className={'button'}>Se dokumenter</a>
-      {adminView !== true ? <a href={`mailto:forslag@t-fk.no?subject=Forslag sak ${item.agendanumber}`} target='_blank' className={'button'}>Lever forslag</a> : null}
-      {adminView === true ? <button className={'button'} data-agenda-item={item.id} onClick={toggleForslag} >Registrer forslag</button> : null}
-      {adminView === true ? <button className={meeting.now === item.id ? 'button nowPlaying' : 'button'} data-agenda-item={item.id} onClick={setNowPlaying} >Behandles nå</button> : null}
+      {adminView === undefined ? <a href={`mailto:forslag@t-fk.no?subject=Forslag sak ${item.agendanumber}`} target='_blank' className={'button'}>Lever forslag</a> : null}
+      {adminView !== undefined ? <button className={'button'} data-agenda-item={item.id} onClick={toggleForslag} >Registrer forslag</button> : null}
+      {adminView !== undefined ? <button className={meeting.now === item.id ? 'button nowPlaying' : 'button'} data-agenda-item={item.id} onClick={setNowPlaying} >Behandles nå</button> : null}
     </div>
     <AgendaItemListForslag
       meeting={meeting}

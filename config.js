@@ -2,6 +2,7 @@ const { name, version, now: {alias} } = require('./package.json')
 
 const config = {
   SSO_URL: process.env.SSO_URL || 'https://micro-auth-mock-xawzybdnnj.now.sh/login',
+  HOST_URL: process.env.NODE_ENV === 'production' ? `https://${alias}` : 'http://localhost:3000',
   ORIGIN_URL: process.env.NODE_ENV === 'production' ? `https://${alias}/api/login` : 'http://localhost:3000/api/login',
   APP: {
     name,

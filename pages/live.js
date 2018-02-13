@@ -1,12 +1,25 @@
 import React, { Component } from 'react'
 import Session from '../components/Session'
 import Page from '../components/Page'
-import NowPlaying from '../components/NowPlaying'
+import AgendaItem from '../components/AgendaItem'
 import Gun from 'gun/gun'
 import 'gun/lib/open'
-const gunURL = process.env.NOW_URL ? `${process.env.NOW_URL}/gun` : 'http://localhost:3000/gun'
+
+const { HOST_URL } = require('../config')
+const gunURL = `${HOST_URL}/gun`
 const gun = Gun(gunURL)
 const repackMeeting = require('../lib/repack-meeting')
+
+function renderAgenda (meeting) {
+  let agenda = false
+  if (meeting && meeting.agenda) {
+    const filteredAgenda = meeting.agenda.filter(item => item.id === meeting.now)
+    agenda = filteredAgenda[0]
+  }
+  return agenda !== false
+  ? <AgendaItem meeting={meeting} item={agenda} />
+  : null
+}
 
 class Live extends Component {
   constructor (props) {
@@ -26,7 +39,10 @@ class Live extends Component {
   render () {
     return (
       <Page username={this.props.user ? this.props.user.userId : null}>
-        <NowPlaying meeting={this.state.meeting} />
+        {this.state.meeting !== false && this.state.meeting.now
+          ? renderAgenda(this.state.meeting)
+          : 'Det behandles ingen saker for øyeblikket'
+        }
       </Page>
     )
   }

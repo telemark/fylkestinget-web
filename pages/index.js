@@ -4,7 +4,9 @@ import Page from '../components/Page'
 import ListMeetings from '../components/ListMeetings'
 import Gun from 'gun/gun'
 import 'gun/lib/open'
-const gunURL = process.env.NOW_URL ? `${process.env.NOW_URL}/gun` : 'http://localhost:3000/gun'
+
+const { HOST_URL } = require('../config')
+const gunURL = `${HOST_URL}/gun`
 const gun = Gun(gunURL)
 const repackMeeting = require('../lib/repack-meeting')
 
