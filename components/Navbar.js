@@ -15,15 +15,17 @@ export default ({ username = false }) => (
       ? <ul className={'right'}>
         <li><a href='/forslag'>Forslag</a></li>
         <li><a href='/live'>Live</a></li>
+        <li><a href='/admin'>Administrasjon</a></li>
         <li>
           <DropDownMenu name={username}>
-            <div><a href='/admin'>Administrasjon</a></div>
+            <div><a href='/import'>Import</a></div>
             <div><a href='/profile'>Profil</a></div>
             <div><a href='/api/logout'>Logg ut</a></div>
           </DropDownMenu>
         </li>
       </ul>
       : <ul className={'right'}>
+        <li><a href='/'>Forsiden</a></li>
         <li><a href='/forslag'>Forslag</a></li>
         <li><a href='/live'>Live</a></li>
         <li><a href={AUTH_URL}>Logg inn</a></li>
