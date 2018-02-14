@@ -9,14 +9,13 @@ export default ({ username = false }) => (
           <img style={{ width: '36px' }} src={COMPANY.logo} />
         </a>
       </li>
-      <li><span className='company-name'>{COMPANY.name} -</span> {APP.name}</li>
+      <li><span className='app-name'>{APP.name}</span></li>
     </ul>
     { username
       ? <ul className={'right'}>
         <li><a href='/'>Forsiden</a></li>
         <li><a href='/forslag'>Forslag</a></li>
         <li><a href='/live'>Live</a></li>
-        <li><a href='/admin'>Administrasjon</a></li>
         <li>
           <DropDownMenu name={username}>
             <div><a href='/import'>Import</a></div>
@@ -72,7 +71,7 @@ export default ({ username = false }) => (
         text-decoration: underline;
       }
       @media screen and (max-width: 800px) {
-        .company-name {
+        .app-name {
           display: none;
         }
     `}

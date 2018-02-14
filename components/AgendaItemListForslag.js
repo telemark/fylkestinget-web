@@ -5,7 +5,7 @@ function getForslag (meeting, item, adminView) {
   if (meeting && meeting.forslag) {
     if (item) {
       const filteredForslag = meeting.forslag.filter(forslag => forslag.agendaId === item.id)
-      if (adminView === true) {
+      if (adminView !== undefined) {
         forslag = filteredForslag
       } else {
         const showOnlyVisible = filteredForslag.filter(forslag => forslag.show === true)

@@ -5,8 +5,8 @@ export default ({ data, index, adminView, toggleShowForslag, deleteForslag }) =>
     <h2>{index + 1}</h2>
     <div>{data.from}</div>
     <div>{data.proposal}</div>
-    {adminView === true ? <button data-ref-id={data.refId} onClick={deleteForslag}>Slett</button> : null}
-    {adminView === true ? <button data-ref-id={data.refId} data-show-state={data.show} className={data.show === true ? 'isVisible' : ''} onClick={toggleShowForslag}>Vis</button> : null}
+    {adminView !== undefined ? <button data-ref-id={data.refId} onClick={deleteForslag}>Slett</button> : null}
+    {adminView !== undefined ? <button data-ref-id={data.refId} data-show-state={data.show} className={data.show === true ? 'isVisible' : ''} onClick={toggleShowForslag}>{data.show === true ? 'Skjul' : 'Vis'}</button> : null}
     <style jsx>
       {`
         button {

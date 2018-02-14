@@ -5,7 +5,7 @@ export default ({ children }) => (
       {`
         .main {
           grid-area: content;
-          padding-top: 80px;
+          padding-bottom: 50px;
           margin: auto;
           width: 100%;
           height: 100%;
