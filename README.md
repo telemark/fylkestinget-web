@@ -6,6 +6,48 @@
 
 Forslagsløsning for fylkestinget
 
+## Brukerveiledning
+
+Løsningen viser agenda og innkomne forslag for fylkestingmøtene.
+
+Møtedeltagere har tre visningsmuligheter.
+- Liste over alle saker med forslagene plassert under hver sak
+- Liste hvor kun saker med forslag vises
+- Live visning hvor man kun ser saken som er til behandling og dens forslag
+
+Forslag leveres ved hjelp av e-post.
+- Trykk lever forslag ved saken du vil levere forslag til
+
+## Administrator
+
+Etter innlogging har administrator mulighet til
+- Importere ny agenda
+- Registrere forslag
+- Vise og skjule forslag
+- Sette saker til behandling
+
+### Importere ny agenda
+
+- Finn frem det aktuelle møtet fra [OpenGov](http://opengov.cloudapp.net/Meetings/tfk)
+- Kopier lenken til møtets agenda
+- Trykk på brukernavnet helt øverst til høyre og velg importer  
+- Lim inn lenken i feltet og trykk importer
+- Dersom alt gikk greit vil sakslisten fra møtet vises på siden
+- Obs: Når man importere en agenda slettes alt annet innhold
+
+### Registrere forslag
+
+- Fra sakslisten trykk registrer forslag ved saken forslaget hører til
+- Fyll inn feltene og trykk legg til
+- Forslag vil ut utgangspunktet ha status skjul
+- Styr visning av forslag ved hjelp av knappene
+- Forslag har ikke redigeringsmodus så for å endre må du slette og legge inn påny
+
+### Styre live visning
+
+- Trykk Behandles nå ved saken som er til behandling
+- Styr visning og skjuling av forslag ved hjelp av knappene
+
 ## License
 
 [MIT](LICENSE)

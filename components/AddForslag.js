@@ -61,6 +61,7 @@ export default ({addForslag, meeting, updating, toggleForslag, activeAgendaId}) 
           height: 200px;
           margin: 10px;
           font-size: 20px;
+          clear: both;
         }
 
         textarea:focus {
