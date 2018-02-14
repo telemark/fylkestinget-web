@@ -43,6 +43,8 @@
     "opengov-meetings": "4.1.0",
     "react": "16.2.0",
     "react-dom": "16.2.0",
+    "react-full-screen": "0.2.2",
+    "react-key-handler": "1.0.1",
     "uuid": "3.2.1"
   },
   "devDependencies": {

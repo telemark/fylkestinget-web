@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import Fullscreen from 'react-full-screen'
+import KeyHandler, {KEYPRESS} from 'react-key-handler'
 import Session from '../components/Session'
 import Page from '../components/Page'
 import AgendaItem from '../components/AgendaItem'
@@ -25,8 +27,15 @@ class Live extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      meeting: false
+      meeting: false,
+      isFull: false
     }
+    this.toggleFullscreen = this.toggleFullscreen.bind(this)
+  }
+
+  toggleFullscreen () {
+    const isFull = this.state.isFull
+    this.setState({isFull: !isFull})
   }
 
   async componentDidMount () {
@@ -39,10 +48,13 @@ class Live extends Component {
   render () {
     return (
       <Page username={this.props.user ? this.props.user.userId : null}>
-        {this.state.meeting !== false && this.state.meeting.now
-          ? renderAgenda(this.state.meeting)
-          : 'Det behandles ingen saker for øyeblikket'
-        }
+        <Fullscreen enabled={this.state.isFull} onChange={isFull => this.setState({isFull})}>
+          <KeyHandler keyEventName={KEYPRESS} keyValue='f' onKeyHandle={this.toggleFullscreen} />
+          {this.state.meeting !== false && this.state.meeting.now
+            ? renderAgenda(this.state.meeting)
+            : 'Det behandles ingen saker for øyeblikket'
+          }
+        </Fullscreen>
       </Page>
     )
   }

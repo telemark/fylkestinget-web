@@ -48,6 +48,7 @@ Etter innlogging har administrator mulighet til
 - Trykk "Sett til behandling" ved saken som er til behandling
 - Kun en sak er til behandling av gangen. Endre ved å trykke "Sett til behandling" på en annen sak. 
 - Styr visning og skjuling av forslag til sak under behandling ved hjelp av knappene
+- Fra "Live" siden kan man gå inn og ut fullskjermmodus ved å trykke tasten "f"
 
 ## License
 
