@@ -15,7 +15,9 @@ export default ({addForslag, meeting, updating, toggleForslag, activeAgendaId}) 
     {getAgendaTitle(meeting, activeAgendaId)}
     <input type='text' id='from' placeholder='Forslagsstiller' required />
     <textarea id='proposal' placeholder='Forslagstekst' required />
-    <button onClick={toggleForslag}>Avbryt</button><button type='submit'>Legg til</button>
+    <div>
+      <button onClick={toggleForslag}>Avbryt</button><button type='submit'>Legg til</button>
+    </div>
     <style jsx>
       {`
         button {

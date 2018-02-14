@@ -37,16 +37,17 @@ Etter innlogging har administrator mulighet til
 
 ### Registrere forslag
 
-- Fra sakslisten trykk registrer forslag ved saken forslaget hører til
-- Fyll inn feltene og trykk legg til
-- Forslag vil ut utgangspunktet ha status skjul
+- Fra sakslisten trykk "Registrer forslag" ved saken forslaget hører til
+- Fyll inn feltene og trykk "Legg til"
+- Forslag vil ut utgangspunktet ha status skjult
 - Styr visning av forslag ved hjelp av knappene
 - Forslag har ikke redigeringsmodus så for å endre må du slette og legge inn påny
 
 ### Styre live visning
 
-- Trykk Behandles nå ved saken som er til behandling
-- Styr visning og skjuling av forslag ved hjelp av knappene
+- Trykk "Sett til behandling" ved saken som er til behandling
+- Kun en sak er til behandling av gangen. Endre ved å trykke "Sett til behandling" på en annen sak. 
+- Styr visning og skjuling av forslag til sak under behandling ved hjelp av knappene
 
 ## License
 

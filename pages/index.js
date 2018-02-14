@@ -60,8 +60,12 @@ class Admin extends Component {
 
   async setNowPlaying (e) {
     e.preventDefault()
-    const agendaId = e.target.dataset.agendaItem
-    gun.get('fylkestinget').put({now: agendaId})
+    let nowPlayingId = e.target.dataset.agendaItem
+    const agendaNow = e.target.dataset.agendaNow
+    if (nowPlayingId === agendaNow) {
+      nowPlayingId = false
+    }
+    gun.get('fylkestinget').put({now: nowPlayingId})
   }
 
   async addForslag (e) {
