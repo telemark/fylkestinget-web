@@ -35,6 +35,7 @@ export default (props) => {
             text-transform: uppercase;
             border-radius: 5px;
             transition: all 0.3s ease 0s;
+            -webkit-appearance: none;
           }
 
           input:focus, input:active {
