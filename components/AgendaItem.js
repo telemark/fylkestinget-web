@@ -50,7 +50,7 @@ export default ({ meeting, item, adminView, toggleForslag, setNowPlaying, toggle
           margin: 10px;
           cursor: pointer;
           text-transform: uppercase;
-          border-radius: 5px;
+          border-radius: 2px;
           transition: all 0.3s ease 0s;
         }
 

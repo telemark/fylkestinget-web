@@ -33,7 +33,7 @@ export default (props) => {
             margin: 10px;
             cursor: pointer;
             text-transform: uppercase;
-            border-radius: 5px;
+            border-radius: 2px;
             transition: all 0.3s ease 0s;
             -webkit-appearance: none;
           }
