@@ -3,7 +3,8 @@ import Button from './Button'
 
 export default ({ data, index, adminView, toggleShowForslag, deleteForslag }) => (
   <div className='forslag'>
-    <div><h2>{index + 1} - {data.from}</h2></div>
+    <div><h2>{index + 1}</h2></div>
+    <div className='author'>av {data.from}</div>
     <div>
       <div style={{whiteSpace: 'pre-wrap'}}>{data.proposal}</div>
       {adminView !== undefined && <Button dataRefId={data.refId} backgroundColor='#c46a6a' onClick={deleteForslag} value='Slett' />}
@@ -13,6 +14,15 @@ export default ({ data, index, adminView, toggleShowForslag, deleteForslag }) =>
       {`
         .isVisible {
           background-color: ${COLORS.color3};
+        }
+        .author {
+          font-size: 12px;
+          color: #8a8a8a;
+          margin-bottom: 10px;
+        }
+        h2 {
+          margin-after: auto;
+         -webkit-margin-after: auto;
         }
         .forslag {
           border-left: 1px solid #d6d6d6;
