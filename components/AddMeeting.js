@@ -18,7 +18,7 @@ export default ({ addMeeting, updating, toggleImport }) => (
     <style jsx>
       {`
         input {
-          width: 700px;
+          width: 80%;
           height: 40px;
           margin: 10px;
           font-size: 20px;
