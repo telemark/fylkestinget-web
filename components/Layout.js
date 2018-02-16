@@ -28,6 +28,9 @@ export default ({ children }) => (
           font-weight: 400;
           font-size: 24px;
         }
+       h2 {
+          -webkit-margin-after: auto;
+        }
         a {
           text-decoration: none;
           color: black;
