@@ -1,37 +1,15 @@
 import { COLORS } from '../config'
+import Button from './Button'
 
 export default ({ data, index, adminView, toggleShowForslag, deleteForslag }) => (
   <div>
     <h2>{index + 1}</h2>
     <div>{data.from}</div>
     <div>{data.proposal}</div>
-    {adminView !== undefined ? <button data-ref-id={data.refId} onClick={deleteForslag}>Slett</button> : null}
-    {adminView !== undefined ? <button data-ref-id={data.refId} data-show-state={data.show} className={data.show === true ? 'isVisible' : ''} onClick={toggleShowForslag}>{data.show === true ? 'Skjul' : 'Vis'}</button> : null}
+    {adminView !== undefined && <Button dataRefId={data.refId} backgroundColor='#c46a6a' onClick={deleteForslag} value='Slett' />}
+    {adminView !== undefined && <Button dataRefId={data.refId} dataShowState={data.show} className={data.show === true ? 'isVisible' : ''} onClick={toggleShowForslag} value={data.show === true ? 'Skjul' : 'Vis'} />}
     <style jsx>
       {`
-        button {
-          background-color: white;
-          border-radius: 2px;
-          color: black;
-          text-align: center;
-          text-decoration: none;
-          display: inline-block;
-          padding: 10 px;
-          font-size: 20px;
-          width: 175px;
-          height: 40px;
-          margin: 10px;
-          cursor: pointer;
-        }
-
-        button:focus {
-          outline:0;
-        }
-
-        button:active {
-          outline: 0;
-        }
-
         .isVisible {
           background-color: ${COLORS.color3};
         }

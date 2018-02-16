@@ -1,14 +1,15 @@
 import AgendaItemListForslag from './AgendaItemListForslag'
 import { COLORS } from '../config'
+import Button from './Button'
 
-export default ({ meeting, item, adminView, toggleForslag, setNowPlaying, toggleShowForslag, deleteForslag }) => (
+export default ({ meeting, item, adminView, toggleForslag, setNowPlaying, toggleShowForslag, deleteForslag, hideButtons = false }) => (
   <div className={'wrapper'}>
     <h2>{item.agendanumber} - {item.title}</h2>
     <div className='item'>
-      <a href={`http://opengov.cloudapp.net/Meetings/tfk/AgendaItems/Details/${item.id}`} target='_blank' className={'button'}>Se dokumenter</a>
-      {adminView === undefined ? <a href={`mailto:forslag@t-fk.no?subject=Forslag sak ${item.agendanumber}`} target='_blank' className={'button'}>Lever forslag</a> : null}
-      {adminView !== undefined ? <button className={'button'} data-agenda-item={item.id} onClick={toggleForslag} >Registrer forslag</button> : null}
-      {adminView !== undefined ? <button className={meeting.now === item.id ? 'button nowPlaying' : 'button'} data-agenda-item={item.id} data-agenda-now={meeting.now} onClick={setNowPlaying} >{meeting.now === item.id ? 'Behandles nå' : 'Sett til behandling'}</button> : null}
+      { !hideButtons && <a href={`http://opengov.cloudapp.net/Meetings/tfk/AgendaItems/Details/${item.id}`} target='_blank'><div className='button'>Se dokumenter</div></a> }
+      {adminView === undefined && !hideButtons && <a href={`mailto:forslag@t-fk.no?subject=Forslag sak ${item.agendanumber}`} target='_blank' className='button'>Lever forslag</a> }
+      {adminView !== undefined && !hideButtons && <Button dataAgendaItem={item.id} onClick={toggleForslag} value='Registrer forslag' />}
+      {adminView !== undefined && !hideButtons && <Button backgroundColor={meeting.now === item.id ? COLORS.color3 : null} dataAgendaItem={item.id} dataAgendaNow={meeting.now} onClick={setNowPlaying} value={meeting.now === item.id ? 'Behandles nå' : 'Sett til behandling'} />}
     </div>
     <AgendaItemListForslag
       meeting={meeting}
@@ -21,7 +22,7 @@ export default ({ meeting, item, adminView, toggleForslag, setNowPlaying, toggle
         a {
           padding: 0px;
           margin: 0px;
-          font-size: 20px;
+          font-size: 12px;
         }
         .item {
           display: flex;
@@ -37,30 +38,26 @@ export default ({ meeting, item, adminView, toggleForslag, setNowPlaying, toggle
 
         .button {
           background-color: white;
-          border-radius: 2px;
-          color: black;
+          color: #353535;
           text-align: center;
           text-decoration: none;
           display: inline-block;
           padding: 10 px;
-          font-size: 20px;
+          font-size: 14px;
           width: 175px;
           height: 40px;
+          line-height: 40px
           margin: 10px;
           cursor: pointer;
+          text-transform: uppercase;
+          border-radius: 5px;
+          transition: all 0.3s ease 0s;
         }
 
-        .button:focus {
-          outline:0;
+        .button:hover {
+          background-color: #d8d8d8;
         }
 
-        .button:active {
-          outline: 0;
-        }
-
-        .nowPlaying {
-          background-color: ${COLORS.color3};
-        }
         @media screen and (max-width: 800px) {
           .item {
             display: grid;

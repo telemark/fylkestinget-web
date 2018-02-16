@@ -1,3 +1,6 @@
+import { COLORS } from '../config'
+import Button from './Button'
+
 export default ({ addMeeting, updating, toggleImport }) => (
   <form onSubmit={addMeeting}>
     <input
@@ -8,33 +11,12 @@ export default ({ addMeeting, updating, toggleImport }) => (
       placeholder='URL til møtet i OpenGov'
       disabled={updating}
       required='required' />
-    <button onClick={toggleImport}>Avbryt</button>
-    <button type='submit' disabled={updating}>Importer</button>
+    <div>
+      <Button onClick={toggleImport} backgroundColor='#c46a6a' value='Avbryt' />
+      <Button type='submit' backgroundColor={COLORS.color3} disabled={updating} value='Importer' />
+    </div>
     <style jsx>
       {`
-        button {
-          background-color: white;
-          border-radius: 2px;
-          color: black;
-          text-align: center;
-          text-decoration: none;
-          display: inline-block;
-          padding: 10 px;
-          font-size: 20px;
-          width: 150px;
-          height: 40px;
-          margin: 10px;
-          cursor: pointer;
-        }
-
-        button:focus {
-          outline:0;
-        }
-
-        button:active {
-          outline: 0;
-        }
-
         input {
           width: 700px;
           height: 40px;

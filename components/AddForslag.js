@@ -1,3 +1,6 @@
+import { COLORS } from '../config'
+import Button from './Button'
+
 function getAgendaTitle (meeting, activeAgendaId) {
   let title = ''
   if (meeting && meeting.agenda) {
@@ -16,35 +19,13 @@ export default ({addForslag, meeting, updating, toggleForslag, activeAgendaId}) 
     <input type='text' id='from' placeholder='Forslagsstiller' required />
     <textarea id='proposal' placeholder='Forslagstekst' required />
     <div>
-      <button onClick={toggleForslag}>Avbryt</button><button type='submit'>Legg til</button>
+      <Button onClick={toggleForslag} backgroundColor='#c46a6a' value='Avbryt' />
+      <Button type='submit' backgroundColor={COLORS.color3} value='Legg til' />
     </div>
     <style jsx>
       {`
-        button {
-          background-color: white;
-          border-radius: 2px;
-          color: black;
-          text-align: center;
-          text-decoration: none;
-          display: inline-block;
-          padding: 10 px;
-          font-size: 20px;
-          width: 150px;
-          height: 40px;
-          margin: 10px;
-          cursor: pointer;
-        }
-
-        button:focus {
-          outline:0;
-        }
-
-        button:active {
-          outline: 0;
-        }
-
         input {
-          width: 700px;
+          width: 80%;
           height: 40px;
           margin: 10px;
           font-size: 20px;
@@ -59,7 +40,7 @@ export default ({addForslag, meeting, updating, toggleForslag, activeAgendaId}) 
         }
 
         textarea {
-          width: 700px;
+          width: 80%;
           height: 200px;
           margin: 10px;
           font-size: 20px;

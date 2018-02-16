@@ -19,7 +19,7 @@ function renderAgenda (meeting) {
     agenda = filteredAgenda[0]
   }
   return agenda !== false
-  ? <AgendaItem meeting={meeting} item={agenda} />
+  ? <AgendaItem meeting={meeting} item={agenda} hideButtons />
   : null
 }
 
