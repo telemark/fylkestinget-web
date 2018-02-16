@@ -61,6 +61,11 @@ export default ({ meeting, item, adminView, toggleForslag, setNowPlaying, toggle
         .nowPlaying {
           background-color: ${COLORS.color3};
         }
+        @media screen and (max-width: 800px) {
+          .item {
+            display: grid;
+          }
+        }
       `}
     </style>
   </div>
