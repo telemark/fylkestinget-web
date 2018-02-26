@@ -34,7 +34,7 @@
   "keywords": [],
   "license": "MIT",
   "dependencies": {
-    "axios": "0.17.1",
+    "axios": "0.18.0",
     "gun": "0.9.94",
     "jsonwebtoken": "8.1.1",
     "micro": "9.1.0",
