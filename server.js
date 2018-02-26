@@ -40,7 +40,7 @@ const server = micro(async (req, res) => {
     } catch (error) {
       throw error
     }
-  } else if (pathname === '/api/agenda') {
+  } else if (pathname.includes('/api/agenda')) {
     const urlSplit = pathname.split('/')
     const meetingId = urlSplit[urlSplit.length - 1]
     const data = await parseAgenda(meetingId)
