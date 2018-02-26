@@ -17,7 +17,7 @@ export default ({ meeting }) => (
   <div>
     <h1>Oversikt over innkommede forslag</h1>
     {meeting !== false && meeting.agenda && meeting.forslag
-    ? repackForslag(meeting).map(item => <AgendaItem meeting={meeting} item={item} />)
-    : 'Det er ikke registrert noen forslag ennå'}
+      ? repackForslag(meeting).map(item => <AgendaItem meeting={meeting} item={item} />)
+      : 'Det er ikke registrert noen forslag ennå'}
   </div>
 )
