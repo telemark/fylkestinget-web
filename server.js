@@ -1,18 +1,17 @@
+require('dotenv').config()
 const Gun = require('gun')
 const os = require('os')
 const micro = require('micro')
-const { send, json } = micro
-const { parse } = require('url')
+const { parse: urlParse } = require('url')
+const { setup, login, callback, logout } = require('./api')
 const redirect = (res, location, statusCode = 302) => { res.statusCode = statusCode; res.setHeader('Location', location); res.end() }
-const { JWT_SECRET, SESSION_KEY } = require('./secrets')
+const { SESSION_KEY } = require('./secrets')
 const session = require('micro-cookie-session')({
   name: 'session',
   keys: [SESSION_KEY],
   maxAge: 24 * 60 * 60 * 1000
 })
 const next = require('next')
-const jwt = require('jsonwebtoken')
-const { AUTH_URL } = require('./config')
 const port = parseInt(process.env.PORT, 10) || 3000
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
@@ -27,26 +26,25 @@ const server = micro(async (req, res) => {
     return
   }
   session(req, res)
-  const { query, pathname } = await parse(req.url, true)
-  const payload = req.method === 'POST' ? await json(req) : query
-  if (pathname.includes('/api/login')) {
-    const token = payload.jwt
+  const { pathname } = await urlParse(req.url, true)
+  if (pathname === '/api/login') {
+    return login(req, res)
+  } else if (pathname === '/api/logout') {
+    req.session = null
+    return logout(req, res)
+  } else if (pathname === '/api/callback') {
     try {
-      const { data: verifiedToken } = jwt.verify(token, JWT_SECRET)
-      req.session.decodedToken = verifiedToken
+      const callbackData = await callback(req, res)
+      req.session.data = callbackData.userProfile[0]
       redirect(res, '/')
     } catch (error) {
-      console.error(error)
-      redirect(res, AUTH_URL)
+      throw error
     }
-  } else if (pathname.includes('/api/logout')) {
-    req.session = null
-    redirect(res, AUTH_URL)
-  } else if (pathname.includes('/api/agenda')) {
+  } else if (pathname === '/api/agenda') {
     const urlSplit = pathname.split('/')
     const meetingId = urlSplit[urlSplit.length - 1]
     const data = await parseAgenda(meetingId)
-    send(res, 200, data)
+    return data
   } else {
     return handle(req, res)
   }
@@ -63,6 +61,7 @@ gun.on('out', {get: {'#': {'*': ''}}})
 app.prepare().then(() => {
   server.listen(port, err => {
     if (err) throw err
+    setup()
     console.log(`> Ready on http://localhost:${port}`)
     console.log(`> data filePath: ${dataFilePath}`)
   })

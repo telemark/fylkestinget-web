@@ -2,23 +2,29 @@ import Session from '../components/Session'
 import Page from '../components/Page'
 
 const Index = ({ user }) => (
-  <Page username={user ? user.userId : null}>
+  <Page username={user ? user.userPrincipalName : null}>
     <div>
       <div className='userPhoto'>
         <img src='/static/placeholder.png' />
       </div>
       <div className='userInfo'>
         <div>
-          Navn: {user && user.userName}
+          Navn: {user && user.displayName}
         </div>
         <div>
-          Brukernavn: {user && user.userId}
+          Brukernavn: {user && user.userPrincipalName}
         </div>
         <div>
-          E-post: {user && user.email}
+          E-post: {user && user.mail}
         </div>
         <div>
-          Avdeling: {user && user.team}
+          Telefon: {user && user.mobilePhone}
+        </div>
+        <div>
+          Avdeling: {user && user.officeLocation}
+        </div>
+        <div>
+          Jobb tittel: {user && user.jobTitle}
         </div>
       </div>
     </div>

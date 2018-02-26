@@ -47,7 +47,7 @@ class Live extends Component {
 
   render () {
     return (
-      <Page username={this.props.user ? this.props.user.userId : null}>
+      <Page username={this.props.user ? this.props.user.userPrincipalName : null}>
         <Fullscreen enabled={this.state.isFull} onChange={isFull => this.setState({isFull})}>
           <KeyHandler keyEventName={KEYPRESS} keyValue='f' onKeyHandle={this.toggleFullscreen} />
           {this.state.meeting !== false && this.state.meeting.now

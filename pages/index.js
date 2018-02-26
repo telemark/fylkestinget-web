@@ -92,7 +92,7 @@ class Admin extends Component {
 
   render () {
     return (
-      <Page username={this.props.user ? this.props.user.userId : null}>
+      <Page username={this.props.user ? this.props.user.userPrincipalName : null}>
         {this.state.doAddForslag === true
           ? <AddForslag
             addForslag={this.addForslag}

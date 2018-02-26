@@ -1,9 +1,8 @@
+const uuid = require('uuid/v4')
 const { version, now: {alias} } = require('./package.json')
 
 const config = {
-  SSO_URL: process.env.SSO_URL || 'https://micro-auth-mock-xawzybdnnj.now.sh/login',
   HOST_URL: process.env.NODE_ENV === 'production' ? `https://${alias}` : 'http://localhost:3000',
-  ORIGIN_URL: process.env.NODE_ENV === 'production' ? `https://${alias}/api/login` : 'http://localhost:3000/api/login',
   APP: {
     name: process.env.APP_NAME || 'Digitalt fylkesting',
     version
@@ -23,10 +22,31 @@ const config = {
     color7: process.env.COLOR7 || '#6a493e',
     color8: process.env.COLOR8 || '#f78815',
     color9: process.env.COLOR9 || '#006c83'
-  }
+  },
+  domain: process.env.MOA_DOMAIN || 'http://localhost:3000', // url to your app
+  tenant_id: process.env.MOA_TENANT_ID || 'skoletfk.onmicrosoft.com', // Your tenant ID
+  client_id: process.env.MOA_CLIENT_ID || '1813bd20-69c4-4ce3-b02a-4c9f66cbfd7d', // Application ID in https://portal.azure.com/ -> Azure Active Directory -> App Registrations
+  client_secret: process.env.MOA_CLIENT_SECRET || 'rkTSxYSmH2J5ctBB+la+8BnOIPDzrOLrMPLmGU+KtYE=' // Registered app in  https://portal.azure.com/ -> Settings -> Keys
 }
 
 module.exports = {
-  AUTH_URL: `${config.SSO_URL}?origin=${config.ORIGIN_URL}`,
+  debug: true,
+  domain: config.domain,
+  autodiscover_url: 'https://login.microsoftonline.com/' + config.tenant_id + '/.well-known/openid-configuration',
+  graph_user_info_url: [
+    'https://graph.microsoft.com/v1.0/me'
+  //  'https://graph.microsoft.com/v1.0/me/memberOf' additional resources to get from graph. set "graph_user_info_url: false" to disable
+  ],
+  client_secret: config.client_secret, // Registered app in  https://portal.azure.com/ -> Settings -> Keys
+  grant_type: 'authorization_code',
+  auth: {
+    client_id: config.client_id, // Application ID in https://portal.azure.com/ -> Azure Active Directory -> App Registrations
+    response_type: 'code id_token',
+    redirect_uri: config.domain + '/api/callback', // Same as configured in azure app registration
+    response_mode: 'form_post',
+    scope: 'openid',
+    state: uuid(),
+    nonce: uuid()
+  },
   ...config
 }

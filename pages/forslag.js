@@ -27,7 +27,7 @@ class Forslag extends Component {
 
   render () {
     return (
-      <Page username={this.props.user ? this.props.user.userId : null}>
+      <Page username={this.props.user ? this.props.user.userPrincipalName : null}>
         <ListForslag meeting={this.state.meeting} />
       </Page>
     )

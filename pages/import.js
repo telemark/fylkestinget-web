@@ -68,7 +68,7 @@ class Import extends Component {
 
   render () {
     return (
-      <Page username={this.props.user ? this.props.user.userId : null}>
+      <Page username={this.props.user ? this.props.user.userPrincipalName : null}>
         <h1>Importer ny saksliste</h1>
         <AddMeeting addMeeting={this.addMeeting} updating={this.state.updating} toggleImport={this.toggleImport} />
         <ListMeetings meeting={this.state.meeting} />

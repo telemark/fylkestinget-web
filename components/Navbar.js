@@ -1,5 +1,5 @@
 import DropDownMenu from './DropDownMenu'
-import { AUTH_URL, COMPANY, COLORS, APP } from '../config'
+import { COMPANY, COLORS, APP } from '../config'
 
 export default ({ username = false }) => (
   <nav>
@@ -28,7 +28,7 @@ export default ({ username = false }) => (
         <li><a href='/'>Forsiden</a></li>
         <li><a href='/forslag'>Forslag</a></li>
         <li><a href='/live'>Live</a></li>
-        <li><a href={AUTH_URL}>Logg inn</a></li>
+        <li><a href='/api/login'>Logg inn</a></li>
       </ul>
     }
     <style jsx>{`
