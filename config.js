@@ -24,9 +24,9 @@ const config = {
     color9: process.env.COLOR9 || '#006c83'
   },
   domain: process.env.MOA_DOMAIN || 'http://localhost:3000', // url to your app
-  tenant_id: process.env.MOA_TENANT_ID || 'skoletfk.onmicrosoft.com', // Your tenant ID
-  client_id: process.env.MOA_CLIENT_ID || '1813bd20-69c4-4ce3-b02a-4c9f66cbfd7d', // Application ID in https://portal.azure.com/ -> Azure Active Directory -> App Registrations
-  client_secret: process.env.MOA_CLIENT_SECRET || 'rkTSxYSmH2J5ctBB+la+8BnOIPDzrOLrMPLmGU+KtYE=' // Registered app in  https://portal.azure.com/ -> Settings -> Keys
+  tenant_id: process.env.MOA_TENANT_ID || '<your-tenant-id>.onmicrosoft.com', // Your tenant ID
+  client_id: process.env.MOA_CLIENT_ID || 'your-client-id', // Application ID in https://portal.azure.com/ -> Azure Active Directory -> App Registrations
+  client_secret: process.env.MOA_CLIENT_SECRET || 'your-password' // Registered app in  https://portal.azure.com/ -> Settings -> Keys
 }
 
 module.exports = {
