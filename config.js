@@ -34,8 +34,8 @@ module.exports = {
   domain: config.domain,
   autodiscover_url: 'https://login.microsoftonline.com/' + config.tenant_id + '/.well-known/openid-configuration',
   graph_user_info_url: [
-    'https://graph.microsoft.com/v1.0/me'
-  //  'https://graph.microsoft.com/v1.0/me/memberOf' additional resources to get from graph. set "graph_user_info_url: false" to disable
+    'https://graph.microsoft.com/v1.0/me?$select=businessPhones,displayName,givenName,jobTitle,mail,mobilePhone,officeLocation,surname,userPrincipalName,department,birthday,companyName',
+    'https://graph.microsoft.com/v1.0/me/memberOf?$select=displayName,description' // additional resources to get from graph. set "graph_user_info_url: false" to disable
   ],
   client_secret: config.client_secret, // Registered app in  https://portal.azure.com/ -> Settings -> Keys
   grant_type: 'authorization_code',
