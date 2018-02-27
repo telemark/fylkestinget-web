@@ -1,3 +1,4 @@
+import Markdown from 'react-markdown'
 import { COLORS } from '../config'
 import Button from './Button'
 
@@ -6,7 +7,7 @@ export default ({ data, index, adminView, toggleShowForslag, deleteForslag }) =>
     <div><h2>{index + 1}</h2></div>
     <div className='author'>av {data.from}</div>
     <div>
-      <div style={{whiteSpace: 'pre-wrap'}}>{data.proposal}</div>
+      <div style={{whiteSpace: 'pre-wrap'}}><Markdown source={data.proposal} /></div>
       {
         adminView &&
           <Button
