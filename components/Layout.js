@@ -5,9 +5,9 @@ export default ({ children }) => (
   <div className='container'>
     <Head>
       <meta name='viewport' content='initial-scale=0.8, maximum-scale=0.8, minimum-scale=0.8 user-scalable=no, width=device-width' />
-      <link rel='icon' sizes='192x192' href='/static/icons/chrome-touch-icon-192x192.png' />
-      <link rel='apple-touch-icon' href='/static/icons/apple-touch-icon-precomposed.png' />
-      <link rel='shortcut icon' href='/static/icons/favicon.ico' />
+      <link rel='icon' sizes='192x192' href={COMPANY.icon192x192} />
+      <link rel='apple-touch-icon' href={COMPANY.icon152x152} />
+      <link rel='shortcut icon' href={COMPANY.favicon} />
       <title>{COMPANY.name} - {APP.name} - {APP.version}</title>
     </Head>
     { children }
