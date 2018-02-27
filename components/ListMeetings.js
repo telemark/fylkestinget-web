@@ -12,7 +12,7 @@ export default ({ meeting, adminView, toggleForslag, setNowPlaying, toggleShowFo
         setNowPlaying={setNowPlaying}
         toggleShowForslag={toggleShowForslag}
         deleteForslag={deleteForslag}
-        />
+      />
     </div>
-      : 'Ingen møter er registrert'
+    : 'Ingen møter er registrert'
 )

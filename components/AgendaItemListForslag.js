@@ -4,7 +4,7 @@ function getForslag (meeting, item, adminView) {
   let forslag = []
   if (meeting && meeting.forslag && item) {
     const filteredForslag = meeting.forslag.filter(forslag => forslag.agendaId === item.id)
-    forslag = adminView ? filteredForslag : filteredForslag.filter(forslag => forslag.show === true)
+    forslag = adminView ? filteredForslag : filteredForslag.filter(forslag => !!forslag.show)
   }
   return forslag
 }

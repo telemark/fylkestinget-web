@@ -97,7 +97,7 @@ class Admin extends Component {
           updating={this.state.updating}
           toggleForslag={this.toggleForslag}
           activeAgendaId={this.state.activeAgendaId}
-            />
+        />
         }
         {!this.state.doAddForslag &&
           <ListMeetings
@@ -107,7 +107,7 @@ class Admin extends Component {
             setNowPlaying={this.setNowPlaying}
             toggleShowForslag={this.toggleShowForslag}
             deleteForslag={this.deleteForslag}
-            />
+          />
         }
       </Page>
     )
