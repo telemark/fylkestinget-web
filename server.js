@@ -1,4 +1,6 @@
-require('dotenv').config()
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
 const Gun = require('gun')
 const os = require('os')
 const micro = require('micro')
