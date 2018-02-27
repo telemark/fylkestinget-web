@@ -29,7 +29,7 @@
     "build": "next build",
     "start": "node server.js",
     "refresh": "rm -rf node_modules && rm package-lock.json && npm install",
-    "deploy": "now && now alias"
+    "deploy": "now -E secrets.env && now alias"
   },
   "keywords": [],
   "license": "MIT",
@@ -58,7 +58,7 @@
   },
   "now": {
     "name": "fylkestinget-web",
-    "alias": "fylkestinget.tjeneste.win",
+    "alias": "fylkestinget.t-fk.no",
     "type": "npm",
     "engines": {
       "node": "8.9.4"
