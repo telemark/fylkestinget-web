@@ -90,7 +90,7 @@ exports.login = (req, res) => {
 }
 
 exports.logout = (req, res) => {
-  const params = stringify({ post_logout_redirect_uri: config.redirect_uri })
+  const params = stringify({ post_logout_redirect_uri: config.HOST_URL })
   log('info', `Logging out through ${config.metadata.end_session_endpoint}`)
   redirect(res, `${config.metadata.end_session_endpoint}?${params}`)
 }
