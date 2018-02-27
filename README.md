@@ -30,7 +30,7 @@ Etter innlogging har administrator mulighet til
 
 - Finn frem det aktuelle møtet fra [OpenGov](http://opengov.cloudapp.net/Meetings/tfk)
 - Kopier lenken til møtets agenda
-- Trykk på brukernavnet helt øverst til høyre og velg importer  
+- Trykk på brukernavnet helt øverst til høyre og velg importer
 - Lim inn lenken i feltet og trykk importer
 - Dersom alt gikk greit vil sakslisten fra møtet vises på siden
 - Obs: Når man importere en agenda slettes alt annet innhold
@@ -46,9 +46,13 @@ Etter innlogging har administrator mulighet til
 ### Styre live visning
 
 - Trykk "Sett til behandling" ved saken som er til behandling
-- Kun en sak er til behandling av gangen. Endre ved å trykke "Sett til behandling" på en annen sak. 
+- Kun en sak er til behandling av gangen. Endre ved å trykke "Sett til behandling" på en annen sak.
 - Styr visning og skjuling av forslag til sak under behandling ved hjelp av knappene
 - Fra "Live" siden kan man gå inn og ut fullskjermmodus ved å trykke tasten "f"
+
+## Screenshot
+
+![Screenshot](static/fylkestinget-preview.gif "Screenshot of fylkestinget")
 
 ## License
 
