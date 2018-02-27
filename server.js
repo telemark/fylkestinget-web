@@ -1,4 +1,5 @@
-if (process.env.NODE_ENV !== 'production') {
+const dev = process.env.NODE_ENV !== 'production'
+if (dev) {
   require('dotenv').config()
 }
 const Gun = require('gun')
@@ -15,7 +16,6 @@ const session = require('micro-cookie-session')({
 })
 const next = require('next')
 const port = parseInt(process.env.PORT, 10) || 3000
-const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
 const handle = app.getRequestHandler()
 const parseAgenda = require('./lib/parse-agenda')

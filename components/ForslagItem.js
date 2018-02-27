@@ -7,8 +7,26 @@ export default ({ data, index, adminView, toggleShowForslag, deleteForslag }) =>
     <div className='author'>av {data.from}</div>
     <div>
       <div style={{whiteSpace: 'pre-wrap'}}>{data.proposal}</div>
-      {adminView !== undefined && <Button dataRefId={data.refId} backgroundColor='#c46a6a' onClick={deleteForslag} value='Slett' />}
-      {adminView !== undefined && <Button dataRefId={data.refId} backgroundColor={COLORS.color3} dataShowState={data.show} className={data.show === true ? 'isVisible' : ''} onClick={toggleShowForslag} value={data.show === true ? 'Skjul' : 'Vis'} />}
+      {
+        adminView &&
+          <Button
+            dataRefId={data.refId}
+            backgroundColor='#c46a6a'
+            onClick={deleteForslag}
+            value='Slett'
+          />
+      }
+      {
+        adminView &&
+          <Button
+            dataRefId={data.refId}
+            backgroundColor={COLORS.color3}
+            dataShowState={data.show}
+            className={data.show === true ? 'isVisible' : ''}
+            onClick={toggleShowForslag}
+            value={data.show === true ? 'Skjul' : 'Vis'}
+          />
+      }
     </div>
     <style jsx>
       {`

@@ -45,10 +45,7 @@ class Admin extends Component {
     e.preventDefault()
     const refId = e.target.dataset.refId
     const nowState = e.target.dataset.showState
-    let showState = false
-    if (nowState === 'false') {
-      showState = true
-    }
+    const showState = nowState === 'false'
     gun.get('fylkestinget').get('forslag').get(refId).get('show').put(showState)
   }
 
@@ -93,24 +90,24 @@ class Admin extends Component {
   render () {
     return (
       <Page username={this.props.user ? this.props.user.userPrincipalName : null}>
-        {this.state.doAddForslag === true
-          ? <AddForslag
-            addForslag={this.addForslag}
-            meeting={this.state.meeting}
-            updating={this.state.updating}
-            toggleForslag={this.toggleForslag}
-            activeAgendaId={this.state.activeAgendaId} />
-          : null
+        {this.state.doAddForslag &&
+        <AddForslag
+          addForslag={this.addForslag}
+          meeting={this.state.meeting}
+          updating={this.state.updating}
+          toggleForslag={this.toggleForslag}
+          activeAgendaId={this.state.activeAgendaId}
+            />
         }
-        {this.state.doAddForslag !== true
-          ? <ListMeetings
+        {!this.state.doAddForslag &&
+          <ListMeetings
             meeting={this.state.meeting}
             adminView={this.props.user}
             toggleForslag={this.toggleForslag}
             setNowPlaying={this.setNowPlaying}
             toggleShowForslag={this.toggleShowForslag}
-            deleteForslag={this.deleteForslag} />
-          : null
+            deleteForslag={this.deleteForslag}
+            />
         }
       </Page>
     )

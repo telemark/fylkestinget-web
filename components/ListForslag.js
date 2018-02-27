@@ -3,7 +3,7 @@ import AgendaItem from './AgendaItem'
 function repackForslag (meeting) {
   if (meeting.agenda && meeting.forslag) {
     const agenda = meeting.agenda.map(agenda => {
-      const forslag = meeting.forslag.filter(forslag => forslag.agendaId === agenda.id).filter(forslag => forslag.show === true)
+      const forslag = meeting.forslag.filter(forslag => forslag.agendaId === agenda.id && forslag.show === true)
       return Object.assign({}, agenda, {forslag: forslag})
     })
     const filteredAgenda = agenda.filter(agenda => agenda.forslag.length > 0)
@@ -16,7 +16,7 @@ function repackForslag (meeting) {
 export default ({ meeting }) => (
   <div>
     <h1>Oversikt over innkommede forslag</h1>
-    {meeting !== false && meeting.agenda && meeting.forslag
+    {meeting && meeting.agenda && meeting.forslag
       ? repackForslag(meeting).map(item => <AgendaItem meeting={meeting} item={item} />)
       : 'Det er ikke registrert noen forslag ennå'}
   </div>

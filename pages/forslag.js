@@ -19,7 +19,6 @@ class Forslag extends Component {
   }
 
   async componentDidMount () {
-    console.log('mounted')
     gun.get('fylkestinget').open(data => {
       this.setState({meeting: repackMeeting(data)})
     })

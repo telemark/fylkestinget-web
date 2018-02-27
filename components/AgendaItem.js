@@ -6,10 +6,34 @@ export default ({ meeting, item, adminView, toggleForslag, setNowPlaying, toggle
   <div className={'wrapper'}>
     <h2>{item.agendanumber} - {item.title}</h2>
     <div className='item'>
-      { !hideButtons && <a href={`http://opengov.cloudapp.net/Meetings/tfk/AgendaItems/Details/${item.id}`} target='_blank'><div className='button'>Se dokumenter</div></a> }
-      {adminView === undefined && !hideButtons && <a href={`mailto:forslag@t-fk.no?subject=Forslag sak ${item.agendanumber}`} target='_blank' className='button'>Lever forslag</a> }
-      {adminView !== undefined && !hideButtons && <Button dataAgendaItem={item.id} onClick={toggleForslag} value='Registrer forslag' />}
-      {adminView !== undefined && !hideButtons && <Button backgroundColor={meeting.now === item.id ? COLORS.color3 : null} dataAgendaItem={item.id} dataAgendaNow={meeting.now} onClick={setNowPlaying} value={meeting.now === item.id ? 'Behandles nå' : 'Sett til behandling'} />}
+      { !hideButtons &&
+        <a href={`http://opengov.cloudapp.net/Meetings/tfk/AgendaItems/Details/${item.id}`} target='_blank'>
+          <div className='button'>
+            Se dokumenter
+          </div>
+        </a>
+      }
+      { !adminView && !hideButtons &&
+        <a href={`mailto:forslag@t-fk.no?subject=Forslag sak ${item.agendanumber}`} target='_blank' className='button'>
+          Lever forslag
+        </a>
+      }
+      { adminView && !hideButtons &&
+        <Button
+          dataAgendaItem={item.id}
+          onClick={toggleForslag}
+          value='Registrer forslag'
+        />
+      }
+      { adminView && !hideButtons &&
+        <Button
+          backgroundColor={meeting.now === item.id ? COLORS.color3 : null}
+          dataAgendaItem={item.id}
+          dataAgendaNow={meeting.now}
+          onClick={setNowPlaying}
+          value={meeting.now === item.id ? 'Behandles nå' : 'Sett til behandling'}
+        />
+      }
     </div>
     <AgendaItemListForslag
       meeting={meeting}

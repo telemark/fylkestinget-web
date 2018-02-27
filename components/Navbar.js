@@ -3,7 +3,7 @@ import { COMPANY, COLORS, APP } from '../config'
 
 export default ({ username = false }) => (
   <nav>
-    <ul className={'left'}>
+    <ul className='left'>
       <li>
         <a href='/'>
           <img style={{ width: '36px' }} src={COMPANY.logo} />
@@ -12,7 +12,7 @@ export default ({ username = false }) => (
       <li><span className='app-name'>{APP.name}</span></li>
     </ul>
     { username
-      ? <ul className={'right'}>
+      ? <ul className='right'>
         <li><a href='/'>Forsiden</a></li>
         <li><a href='/forslag'>Forslag</a></li>
         <li><a href='/live'>Live</a></li>
@@ -24,7 +24,7 @@ export default ({ username = false }) => (
           </DropDownMenu>
         </li>
       </ul>
-      : <ul className={'right'}>
+      : <ul className='right'>
         <li><a href='/'>Forsiden</a></li>
         <li><a href='/forslag'>Forslag</a></li>
         <li><a href='/live'>Live</a></li>

@@ -12,8 +12,17 @@ export default ({ addMeeting, updating, toggleImport }) => (
       disabled={updating}
       required='required' />
     <div>
-      <Button onClick={toggleImport} backgroundColor='#c46a6a' value='Avbryt' />
-      <Button type='submit' backgroundColor={COLORS.color3} disabled={updating} value='Importer' />
+      <Button
+        onClick={toggleImport}
+        backgroundColor='#c46a6a'
+        value='Avbryt'
+      />
+      <Button
+        type='submit'
+        backgroundColor={COLORS.color3}
+        disabled={updating}
+        value='Importer'
+      />
     </div>
     <style jsx>
       {`

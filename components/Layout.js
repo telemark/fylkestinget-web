@@ -30,6 +30,7 @@ export default ({ children }) => (
         }
        h2 {
           -webkit-margin-after: auto;
+          font-weight: normal;
         }
         a {
           text-decoration: none;

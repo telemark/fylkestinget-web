@@ -13,12 +13,8 @@ const gun = Gun(gunURL)
 const repackMeeting = require('../lib/repack-meeting')
 
 function renderAgenda (meeting) {
-  let agenda = false
-  if (meeting && meeting.agenda) {
-    const filteredAgenda = meeting.agenda.filter(item => item.id === meeting.now)
-    agenda = filteredAgenda[0]
-  }
-  return agenda !== false
+  const agenda = meeting && meeting.agenda ? meeting.agenda.find(item => item.id === meeting.now) : false
+  return agenda
     ? <AgendaItem meeting={meeting} item={agenda} hideButtons />
     : null
 }
@@ -39,7 +35,6 @@ class Live extends Component {
   }
 
   async componentDidMount () {
-    console.log('mounted')
     gun.get('fylkestinget').open(data => {
       this.setState({meeting: repackMeeting(data)})
     })
@@ -50,7 +45,7 @@ class Live extends Component {
       <Page username={this.props.user ? this.props.user.userPrincipalName : null}>
         <Fullscreen enabled={this.state.isFull} onChange={isFull => this.setState({isFull})}>
           <KeyHandler keyEventName={KEYPRESS} keyValue='f' onKeyHandle={this.toggleFullscreen} />
-          {this.state.meeting !== false && this.state.meeting.now
+          {this.state.meeting && this.state.meeting.now
             ? renderAgenda(this.state.meeting)
             : 'Det behandles ingen saker for øyeblikket'
           }

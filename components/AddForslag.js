@@ -2,13 +2,10 @@ import { COLORS } from '../config'
 import Button from './Button'
 
 function getAgendaTitle (meeting, activeAgendaId) {
-  let title = ''
-  if (meeting && meeting.agenda) {
-    if (activeAgendaId) {
-      const filteredAgenda = meeting.agenda.filter(item => item.id === activeAgendaId)
-      const agenda = filteredAgenda[0]
-      title = `${agenda.agendanumber} - ${agenda.title}`
-    }
+  let title
+  if (meeting && meeting.agenda && activeAgendaId) {
+    const agenda = meeting.agenda.find(item => item.id === activeAgendaId)
+    title = `${agenda.agendanumber} - ${agenda.title}`
   }
   return (<h1>{title}</h1>)
 }
