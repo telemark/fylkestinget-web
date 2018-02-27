@@ -1,5 +1,5 @@
 import AgendaItemListForslag from './AgendaItemListForslag'
-import { COLORS } from '../config'
+import { COLORS, OPENGOV_URL, OPENGOV_PATH, MAIL } from '../config'
 import Button from './Button'
 
 export default ({ meeting, item, adminView, toggleForslag, setNowPlaying, toggleShowForslag, deleteForslag, hideButtons = false }) => (
@@ -7,14 +7,14 @@ export default ({ meeting, item, adminView, toggleForslag, setNowPlaying, toggle
     <h2>{item.agendanumber} - {item.title}</h2>
     <div className='item'>
       { !hideButtons &&
-        <a href={`http://opengov.cloudapp.net/Meetings/tfk/AgendaItems/Details/${item.id}`} target='_blank'>
+        <a href={`${OPENGOV_URL}${OPENGOV_PATH}/AgendaItems/Details/${item.id}`} target='_blank'>
           <div className='button'>
             Se dokumenter
           </div>
         </a>
       }
       { !adminView && !hideButtons &&
-        <a href={`mailto:forslag@t-fk.no?subject=Forslag sak ${item.agendanumber}`} target='_blank' className='button'>
+        <a href={`mailto:${MAIL}?subject=Forslag sak ${item.agendanumber}`} target='_blank' className='button'>
           Lever forslag
         </a>
       }

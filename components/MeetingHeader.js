@@ -20,7 +20,7 @@ function formatDate (date) {
 }
 
 export default ({meeting}) => (
-  <div className={'meeting-header'}>
+  <div className='meeting-header'>
     <h1>{meeting.board}</h1>
     <div>Dato: {formatDate(meeting.date)}</div>
     <div>Møtested: {meeting.place}</div>

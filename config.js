@@ -23,6 +23,9 @@ const config = {
     color8: process.env.COLOR8 || '#f78815',
     color9: process.env.COLOR9 || '#006c83'
   },
+  OPENGOV_URL: 'http://opengov.cloudapp.net', // URL to opengov
+  OPENGOV_PATH: '/Meetings/tfk', // Path to opengov meetings
+  MAIL: 'forslag@t-fk.no', // mail where suggestions are sent
   domain: process.env.MOA_DOMAIN || 'http://localhost:3000', // url to your app
   tenant_id: process.env.MOA_TENANT_ID || '<your-tenant-id>.onmicrosoft.com', // Your tenant ID
   client_id: process.env.MOA_CLIENT_ID || 'your-client-id', // Application ID in https://portal.azure.com/ -> Azure Active Directory -> App Registrations

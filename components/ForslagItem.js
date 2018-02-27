@@ -7,7 +7,9 @@ export default ({ data, index, adminView, toggleShowForslag, deleteForslag }) =>
     <div><h2>{index + 1}</h2></div>
     <div className='author'>av {data.from}</div>
     <div>
-      <div style={{whiteSpace: 'pre-wrap'}}><Markdown source={data.proposal} /></div>
+      <div style={{whiteSpace: 'pre-wrap'}}>
+        <Markdown source={data.proposal} />
+      </div>
       {
         adminView &&
           <Button
@@ -23,9 +25,9 @@ export default ({ data, index, adminView, toggleShowForslag, deleteForslag }) =>
             dataRefId={data.refId}
             backgroundColor={COLORS.color3}
             dataShowState={data.show}
-            className={data.show === true ? 'isVisible' : ''}
+            className={data.show ? 'isVisible' : ''}
             onClick={toggleShowForslag}
-            value={data.show === true ? 'Skjul' : 'Vis'}
+            value={data.show ? 'Skjul' : 'Vis'}
           />
       }
     </div>
