@@ -3,7 +3,7 @@ import { COLORS, OPENGOV_URL, OPENGOV_PATH, MAIL } from '../config'
 import Button from './Button'
 
 export default ({ meeting, item, adminView, toggleForslag, setNowPlaying, toggleShowForslag, deleteForslag, hideButtons = false }) => (
-  <div className={'wrapper'}>
+  <div className='wrapper'>
     <h2>{item.agendanumber} - {item.title}</h2>
     <div className='item'>
       { !hideButtons &&
@@ -17,6 +17,12 @@ export default ({ meeting, item, adminView, toggleForslag, setNowPlaying, toggle
         <a href={`mailto:${MAIL}?subject=Forslag sak ${item.agendanumber}`} target='_blank' className='button'>
           Lever forslag
         </a>
+      }
+      { !adminView && !hideButtons && meeting.now === item.id &&
+        <Button
+          backgroundColor={COLORS.color3}
+          value='Behandles nå'
+        />
       }
       { adminView && !hideButtons &&
         <Button
