@@ -56,7 +56,7 @@ docker run -d \
 
 ### Set secrets
 
-For azure auth:
+For azure auth
 
 ```sh
 now secrets add fylkestinget_moa_domain <your-configured-domain.com>
@@ -65,12 +65,18 @@ now secrets add fylkestinget_moa_client_id <your-client-id>
 now secrets add fylkestinget_moa_client_secret <your-client-secret>
 ```
 
-For S3:
+For S3
 
 ```sh
 now secrets add fylkestinget_aws_access_key_id <your-access-key-id>
 now secrets add fylkestinget_aws_secret_access_key <your-access-key>
 now secrets add fylkestinget_aws_s3_bucket <your-bucket>
+```
+
+Deploy to now
+```sh
+now https://github.com/telemark/fylkestinget-web
+now alias fylkestinget-web-example-ykaxwfgdoy.now.sh your-configured-domain.com
 ```
 
 ## Screenshot
