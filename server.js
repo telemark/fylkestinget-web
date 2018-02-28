@@ -21,6 +21,26 @@ const handle = app.getRequestHandler()
 const parseAgenda = require('./lib/parse-agenda')
 const dataFilePath = `${os.tmpdir()}/data.json`
 
+function useS3 () {
+  return process.env.AWS_ACCESS_KEY_ID && process.env.AWS_SECRET_ACCESS_KEY && process.env.AWS_S3_BUCKET
+}
+
+function s3Configuration () {
+  let s3 = false
+  if (useS3() === true) {
+    console.log('s3 storage configured')
+    s3 = {
+      key: process.env.AWS_ACCESS_KEY_ID,
+      secret: process.env.AWS_SECRET_ACCESS_KEY,
+      bucket: process.env.AWS_S3_BUCKET
+    }
+  } else {
+    console.log('s3 storage not configured')
+    console.log('using local filestorage')
+  }
+  return s3
+}
+
 const server = micro(async (req, res) => {
   if (Gun.serve(req, res)) {
     res.writeHead(200, {'Content-Type': 'text/html'})
@@ -54,7 +74,8 @@ const server = micro(async (req, res) => {
 })
 
 const gun = Gun({
-  file: dataFilePath,
+  file: !useS3() ? dataFilePath : false,
+  s3: s3Configuration(),
   web: server
 })
 
