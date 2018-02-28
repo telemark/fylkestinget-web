@@ -91,6 +91,7 @@ now secrets add fylkestinget_moa_domain <your-configured-domain.com>
 now secrets add fylkestinget_moa_tenant_id <your-tenant-id.onmicrosoft.com>
 now secrets add fylkestinget_moa_client_id <your-client-id>
 now secrets add fylkestinget_moa_client_secret <your-client-secret>
+now secrets add fylkestinget_session_key <a-random-session-key>
 ```
 
 For S3
