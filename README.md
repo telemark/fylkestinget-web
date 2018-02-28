@@ -94,7 +94,6 @@ now alias fylkestinget-web-example-ykaxwfgdoy.now.sh your-configured-domain.com
 
 ## Related
 
-- [micro-oidc-azure](https://github.com/telemark/micro-oidc-azure) Authenticate with Azure/Office 365
 - [opengov-meetings](https://github.com/zrrrzzt/opengov-meetings) Parse agenda from opengov
 
 ## License
