@@ -75,7 +75,8 @@ now secrets add fylkestinget_aws_s3_bucket <your-bucket>
 
 Deploy to now
 ```sh
-now https://github.com/telemark/fylkestinget-web
+wget https://raw.githubusercontent.com/telemark/fylkestinget-web/master/production.env
+now -E production.env https://github.com/telemark/fylkestinget-web
 now alias fylkestinget-web-example-ykaxwfgdoy.now.sh your-configured-domain.com
 ```
 
