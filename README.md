@@ -24,7 +24,7 @@ Go to *Settings* -> *Keys* in your registered app and type inn a Key description
 
 Go to *Settings* -> *Required permissions* in your registered app and add "Microsoft Graph" and choose the permission *Read all users' full profiles*. Adde the same permission under *Windows Azure Active Directory*. Then click *Grant Permissions*
 
-Follow the link after "Managed application in local directory" in your registered app and *Users and groups*, choose "Add user" and add user you want access to the app.
+Follow the link after "Managed application in local directory" in your registered app and *Users and groups*, click *Add user* and add user(s) you want to grant access to the app.
 
 # S3 setup
 
