@@ -2,6 +2,7 @@ const uuid = require('uuid/v4')
 const { version, now: {alias} } = require('./package.json')
 
 const config = {
+  DEMO: process.env.DEMO || false, // For demo use only (uses fake login)
   HOST_URL: process.env.NODE_ENV === 'production' ? process.env.MOA_DOMAIN || `https://${alias}` : 'http://localhost:3000',
   APP: {
     name: process.env.APP_NAME || 'Digitalt fylkesting',

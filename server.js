@@ -20,6 +20,7 @@ const app = next({ dev })
 const handle = app.getRequestHandler()
 const parseAgenda = require('./lib/parse-agenda')
 const dataFilePath = `${os.tmpdir()}/data.json`
+const { DEMO } = require('./config')
 
 function useS3 () {
   return process.env.AWS_ACCESS_KEY_ID !== undefined && process.env.AWS_SECRET_ACCESS_KEY !== undefined && process.env.AWS_S3_BUCKET !== undefined
@@ -51,9 +52,16 @@ const server = micro(async (req, res) => {
   session(req, res)
   const { pathname } = await urlParse(req.url, true)
   if (pathname === '/api/login') {
+    if (DEMO) {
+      req.session.data = require('./test/user.json')
+      redirect(res, '/')
+    }
     return login(req, res)
   } else if (pathname === '/api/logout') {
     req.session = null
+    if (DEMO) {
+      redirect(res, '/')
+    }
     return logout(req, res)
   } else if (pathname === '/api/callback') {
     try {
