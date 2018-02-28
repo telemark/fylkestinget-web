@@ -55,12 +55,14 @@ const server = micro(async (req, res) => {
     if (DEMO) {
       req.session.data = require('./test/user.json')
       redirect(res, '/')
+      return
     }
     return login(req, res)
   } else if (pathname === '/api/logout') {
     req.session = null
     if (DEMO) {
       redirect(res, '/')
+      return
     }
     return logout(req, res)
   } else if (pathname === '/api/callback') {
