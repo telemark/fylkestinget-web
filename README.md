@@ -26,6 +26,8 @@ Go to *Settings* -> *Required permissions* in your registered app and add "Micro
 
 Follow the link after "Managed application in local directory" in your registered app and *Users and groups*, click *Add user* and add user(s) you want to grant access to the app.
 
+See [microsoft docs](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-integrating-applications)
+
 # S3 setup
 
 You will need an S3 bucket on [AWS](https://aws.amazon.com) to persist [GUN](https://github.com/amark/gun) in production.
