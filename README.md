@@ -8,6 +8,24 @@ Forslagsløsning for fylkestinget
 
 - [User guide](docs/userguide.md)
 
+# Azure authentication setup
+
+Go to [Azure admin](https://portal.azure.com/)
+
+On the right-side menu choose *Azure Active Directory* -> *App registrations* -> *New application registration* and register the app with following settings
+
+| Setting | value |
+| ------- | ----- |
+| Name    | Your app name |
+| Application type | Web app / API |
+| Sign-on URL | https://your-domain.com/api/callback |
+
+Go to *Settings* -> *Keys* in your registered app and type inn a Key description and value.
+
+Go to *Settings* -> *Required permissions* in your registered app and add "Microsoft Graph" and choose the permission *Read all users' full profiles*. Adde the same permission under *Windows Azure Active Directory*. Then click *Grant Permissions*
+
+Follow the link after "Managed application in local directory" in your registered app and *Users and groups*, choose "Add user" and add user you want access to the app.
+
 # S3 setup
 
 You will need an S3 bucket on [AWS](https://aws.amazon.com) to persist [GUN](https://github.com/amark/gun) in production.
