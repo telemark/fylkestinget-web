@@ -29,7 +29,7 @@
     "build": "next build",
     "start": "node server.js",
     "refresh": "rm -rf node_modules && rm package-lock.json && npm install",
-    "deploy": "now -E secrets.env && now alias"
+    "deploy": "now -E production.env && now alias"
   },
   "keywords": [],
   "license": "MIT",
