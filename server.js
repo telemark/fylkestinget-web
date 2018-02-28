@@ -22,9 +22,9 @@ const parseAgenda = require('./lib/parse-agenda')
 const dataFilePath = `${os.tmpdir()}/data.json`
 
 function useS3 () {
-  return process.env.AWS_ACCESS_KEY_ID && process.env.AWS_SECRET_ACCESS_KEY && process.env.AWS_S3_BUCKET
+  return process.env.AWS_ACCESS_KEY_ID !== undefined && process.env.AWS_SECRET_ACCESS_KEY !== undefined && process.env.AWS_S3_BUCKET !== undefined
 }
-
+console.log('use S3: ', useS3())
 function s3Configuration () {
   let s3 = false
   if (useS3() === true) {
@@ -37,6 +37,7 @@ function s3Configuration () {
   } else {
     console.log('s3 storage not configured')
     console.log('using local filestorage')
+    console.log(`> data filePath: ${dataFilePath}`)
   }
   return s3
 }
@@ -87,6 +88,5 @@ app.prepare().then(() => {
     if (err) throw err
     setup()
     console.log(`> Ready on http://localhost:${port}`)
-    console.log(`> data filePath: ${dataFilePath}`)
   })
 })
