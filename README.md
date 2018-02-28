@@ -6,7 +6,15 @@
 
 Forslagsløsning for fylkestinget
 
-- [Brukerveiledning](docs/userguide.md)
+- [User guide](docs/userguide.md)
+
+# S3 setup
+
+You will need an S3 bucket on [AWS](https://aws.amazon.com) to persist [GUN](https://github.com/amark/gun) in production.
+
+Follow [this guide](http://gun.js.org/docs/Using-Amazon-S3-for-Storage)
+
+For development you can persist to file.
 
 # Installation alternatives
 
@@ -14,7 +22,7 @@ Forslagsløsning for fylkestinget
 
 ### Install
 
-Nodejs and npm must be installed.
+Nodejs >= 8.9.4 and npm must be installed.
 
 ```sh
 git clone https://github.com/telemark/fylkestinget-web
