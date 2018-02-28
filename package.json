@@ -36,7 +36,7 @@
   "dependencies": {
     "axios": "0.18.0",
     "dotenv": "5.0.1",
-    "gun": "0.9.95",
+    "gun": "0.9.96",
     "jsonwebtoken": "8.1.1",
     "micro": "9.1.0",
     "micro-cookie-session": "2.0.0-beta.1",
