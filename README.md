@@ -8,6 +8,71 @@ Forslagsløsning for fylkestinget
 
 - [Brukerveiledning](docs/userguide.md)
 
+# Installation alternatives
+
+## 1. Run on host
+
+### Install
+
+Nodejs and npm must be installed.
+
+```sh
+git clone https://github.com/telemark/fylkestinget-web
+cd fylkestinget-web
+npm i
+```
+
+### Edit config
+
+See [config.js](config.js)
+
+```sh
+vim config.js
+```
+
+### Start fylkestinget-web
+```sh
+npm start
+```
+
+## 2. Run from docker hub
+
+### Edit config
+
+See [production.env](production.env)
+
+### Start fylkestinget-web
+
+```sh
+docker run -d \
+  -p 80:3000 \
+  -p 443:3000 \
+  --env-file production.env \
+  --name fylkestinget-web \
+  telemark/fylkestinget-web
+```
+
+## 3. Deploy to [Now](https://zeit.co/now)
+
+### Set secrets
+
+For azure auth:
+
+```sh
+now secrets add fylkestinget_moa_domain <your-configured-domain.com>
+now secrets add fylkestinget_moa_tenant_id <your-tenant-id.onmicrosoft.com>
+now secrets add fylkestinget_moa_client_id <your-client-id>
+now secrets add fylkestinget_moa_client_secret <your-client-secret>
+```
+
+For S3:
+
+```sh
+now secrets add fylkestinget_aws_access_key_id <your-access-key-id>
+now secrets add fylkestinget_aws_secret_access_key <your-access-key>
+now secrets add fylkestinget_aws_s3_bucket <your-bucket>
+```
+
 ## Screenshot
 
 ![Screenshot](static/fylkestinget-preview.gif "Screenshot of fylkestinget")
