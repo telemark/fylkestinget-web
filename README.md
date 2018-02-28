@@ -10,9 +10,9 @@ Forslagsløsning for fylkestinget
 
 # Azure authentication setup
 
-Go to [Azure admin](https://portal.azure.com/)
+Sign in to the [Azure portal](https://portal.azure.com/)
 
-On the right-side menu choose *Azure Active Directory* -> *App registrations* -> *New application registration* and register the app with following settings
+In the left-hand navigation pane go to *Azure Active Directory* -> *App registrations* -> *New application registration* and register the app with following settings
 
 | Setting | value |
 | ------- | ----- |
@@ -22,9 +22,11 @@ On the right-side menu choose *Azure Active Directory* -> *App registrations* ->
 
 Go to *Settings* -> *Keys* in your registered app and type inn a Key description and value.
 
-Go to *Settings* -> *Required permissions* in your registered app and add "Microsoft Graph" and choose the permission *Read all users' full profiles*. Adde the same permission under *Windows Azure Active Directory*. Then click *Grant Permissions*
+Go to *Settings* -> *Required permissions* in your registered app and add "Microsoft Graph" and choose the permission *Read all users' full profiles*. Add the same permission under *Windows Azure Active Directory*. Then click *Grant Permissions*
 
-Follow the link after "Managed application in local directory" in your registered app and *Users and groups*, choose "Add user" and add user you want access to the app.
+Follow the link after "Managed application in local directory" in your registered app and *Users and groups*, click *Add user* and add user(s) you want to grant access to the app.
+
+See [microsoft docs](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-integrating-applications)
 
 # S3 setup
 
