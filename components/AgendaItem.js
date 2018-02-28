@@ -2,9 +2,13 @@ import AgendaItemListForslag from './AgendaItemListForslag'
 import { COLORS, OPENGOV_URL, OPENGOV_PATH, MAIL } from '../config'
 import Button from './Button'
 
-export default ({ meeting, item, adminView, toggleForslag, setNowPlaying, toggleShowForslag, deleteForslag, hideButtons = false }) => (
+export default ({ meeting, item, adminView, toggleForslag, setNowPlaying, toggleShowForslag, deleteForslag, hideButtons = false, large = false }) => (
   <div className='wrapper'>
-    <h2>{item.agendanumber} - {item.title}</h2>
+    {
+      large
+        ? <h1>{item.agendanumber} - {item.title}</h1>
+        : <h2>{item.agendanumber} - {item.title}</h2>
+    }
     <div className='item'>
       { !hideButtons &&
         <a href={`${OPENGOV_URL}${OPENGOV_PATH}/AgendaItems/Details/${item.id}`} target='_blank'>
@@ -49,6 +53,9 @@ export default ({ meeting, item, adminView, toggleForslag, setNowPlaying, toggle
       deleteForslag={deleteForslag} />
     <style jsx>
       {`
+        h1 {
+          font-size: 40px;
+        }
         a {
           padding: 0px;
           margin: 0px;
@@ -59,11 +66,15 @@ export default ({ meeting, item, adminView, toggleForslag, setNowPlaying, toggle
         }
         .wrapper {
           text-align: left;
-          padding: 10px;
+          padding: ${ large ? '40px' : '10px'};
           border-radius: 0;
           background-color: #FFF;
           box-shadow: 0 2px 2px 0 rgba(0,0,0,.16), 0 0 2px 0 rgba(0,0,0,.12);
           margin-top: 10px;
+        }
+
+        .rightPadding: {
+          padding-left: 20px;
         }
 
         .button {

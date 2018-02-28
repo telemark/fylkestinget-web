@@ -12,10 +12,10 @@ const gunURL = `${HOST_URL}/gun`
 const gun = Gun(gunURL)
 const repackMeeting = require('../lib/repack-meeting')
 
-function renderAgenda (meeting) {
+function renderAgenda (meeting, isFull) {
   const agenda = meeting && meeting.agenda ? meeting.agenda.find(item => item.id === meeting.now) : false
   return agenda
-    ? <AgendaItem meeting={meeting} item={agenda} hideButtons />
+    ? <AgendaItem meeting={meeting} item={agenda} hideButtons large={isFull} />
     : null
 }
 
@@ -46,7 +46,7 @@ class Live extends Component {
         <Fullscreen enabled={this.state.isFull} onChange={isFull => this.setState({isFull})}>
           <KeyHandler keyEventName={KEYPRESS} keyValue='f' onKeyHandle={this.toggleFullscreen} />
           {this.state.meeting && this.state.meeting.now
-            ? renderAgenda(this.state.meeting)
+            ? renderAgenda(this.state.meeting, this.state.isFull)
             : 'Det behandles ingen saker for øyeblikket'
           }
         </Fullscreen>
