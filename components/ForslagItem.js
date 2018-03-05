@@ -38,7 +38,7 @@ export default ({ data, index, adminView, toggleShowForslag, deleteForslag }) =>
         }
         .author {
           font-size: 12px;
-          color: #8a8a8a;
+          color: #4c4c4c;
           margin-bottom: 10px;
         }
         h2 {
