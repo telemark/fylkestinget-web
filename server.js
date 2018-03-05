@@ -25,19 +25,19 @@ const { DEMO } = require('./config')
 function useS3 () {
   return process.env.AWS_ACCESS_KEY_ID !== undefined && process.env.AWS_SECRET_ACCESS_KEY !== undefined && process.env.AWS_S3_BUCKET !== undefined
 }
-console.log('use S3: ', useS3())
+
 function s3Configuration () {
   let s3 = false
   if (useS3() === true) {
-    console.log('s3 storage configured')
+    console.log('> s3 storage configured')
     s3 = {
       key: process.env.AWS_ACCESS_KEY_ID,
       secret: process.env.AWS_SECRET_ACCESS_KEY,
       bucket: process.env.AWS_S3_BUCKET
     }
   } else {
-    console.log('s3 storage not configured')
-    console.log('using local filestorage')
+    console.log('> s3 storage not configured')
+    console.log('> using local filestorage')
     console.log(`> data filePath: ${dataFilePath}`)
   }
   return s3
@@ -68,7 +68,6 @@ const server = micro(async (req, res) => {
   } else if (pathname === '/api/callback') {
     try {
       const callbackData = await callback(req, res)
-      console.log(JSON.stringify(callbackData, null, 2))
       req.session.data = callbackData.userProfile[0]
       redirect(res, '/')
     } catch (error) {
