@@ -37,7 +37,7 @@ export default ({ data, index, adminView, toggleShowForslag, deleteForslag, larg
           background-color: ${COLORS.color3};
         }
         .author {
-          font-size: ${large ? '18px' : 'large'};
+          font-size: ${large ? 'large' : '14px'};
           color: #4c4c4c;
           margin-bottom: 10px;
         }
@@ -49,7 +49,7 @@ export default ({ data, index, adminView, toggleShowForslag, deleteForslag, larg
           border-left: 1px solid #d6d6d6;
           margin-left: 20px;
           padding-left: 10px;
-          font-size: ${large ? '14px' : 'large'};
+          font-size: ${large ? 'large' : '14px'};
         }
       `}
     </style>
