@@ -2,7 +2,7 @@ import Markdown from 'react-markdown'
 import { COLORS } from '../config'
 import Button from './Button'
 
-export default ({ data, index, adminView, toggleShowForslag, deleteForslag }) => (
+export default ({ data, index, adminView, toggleShowForslag, deleteForslag, large }) => (
   <div className='forslag'>
     <div><h2>{index + 1}</h2></div>
     <div className='author'>av {data.from}</div>
@@ -37,7 +37,7 @@ export default ({ data, index, adminView, toggleShowForslag, deleteForslag }) =>
           background-color: ${COLORS.color3};
         }
         .author {
-          font-size: 12px;
+          font-size: ${large ? '18px' : 'large'};
           color: #4c4c4c;
           margin-bottom: 10px;
         }
@@ -49,6 +49,7 @@ export default ({ data, index, adminView, toggleShowForslag, deleteForslag }) =>
           border-left: 1px solid #d6d6d6;
           margin-left: 20px;
           padding-left: 10px;
+          font-size: ${large ? '14px' : 'large'};
         }
       `}
     </style>

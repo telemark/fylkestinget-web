@@ -46,7 +46,8 @@ export default ({ meeting, item, adminView, toggleForslag, setNowPlaying, toggle
       item={item}
       adminView={adminView}
       toggleShowForslag={toggleShowForslag}
-      deleteForslag={deleteForslag} />
+      deleteForslag={deleteForslag}
+      large={large} />
     <style jsx>
       {`
         h2 {

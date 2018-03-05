@@ -9,7 +9,7 @@ function getForslag (meeting, item, adminView) {
   return forslag
 }
 
-export default ({ meeting, item, adminView, toggleShowForslag, deleteForslag }) => (
+export default ({ meeting, item, adminView, toggleShowForslag, deleteForslag, large }) => (
   <div>
     {
       getForslag(meeting, item, adminView).map((forslag, index) =>
@@ -20,6 +20,7 @@ export default ({ meeting, item, adminView, toggleShowForslag, deleteForslag }) 
           adminView={adminView}
           toggleShowForslag={toggleShowForslag}
           deleteForslag={deleteForslag}
+          large={large}
         />
       )
     }
