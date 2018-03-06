@@ -18,6 +18,7 @@ Forslag leveres ved hjelp av e-post.
 Etter innlogging har administrator mulighet til
 - Importere ny agenda
 - Registrere forslag
+- Endre registrerte forslag
 - Vise og skjule forslag
 - Sette saker til behandling
 
@@ -36,7 +37,12 @@ Etter innlogging har administrator mulighet til
 - Fyll inn feltene og trykk "Legg til"
 - Forslag vil ut utgangspunktet ha status skjult
 - Styr visning av forslag ved hjelp av knappene
-- Forslag har ikke redigeringsmodus så for å endre må du slette og legge inn påny
+
+### Endre forslag
+
+- Fra listen over forslag trykk "Endre" ved forslaget som skal endres
+- Endre ønskede felt og trykk "Lagre"
+- Forslag vil nå oppdateres og status settes til skjult
 
 ### Styre live visning
 
