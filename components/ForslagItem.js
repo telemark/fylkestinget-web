@@ -14,7 +14,7 @@ export default ({ data, index, adminView, toggleShowForslag, deleteForslag, togg
         adminView &&
           <Button
             dataRefId={data.refId}
-            backgroundColor='#c46a6a'
+            backgroundColor={COLORS.color5}
             onClick={deleteForslag}
             value='Slett'
           />

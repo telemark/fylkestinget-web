@@ -25,7 +25,7 @@ export default ({addForslag, meeting, updating, toggleForslag, activeAgendaId, a
     <input type='text' id='from' placeholder='Forslagsstiller' defaultValue={getForslagData(meeting, activeForslagId, 'from')} required />
     <textarea id='proposal' placeholder='Forslagstekst' defaultValue={getForslagData(meeting, activeForslagId, 'proposal')} required />
     <div>
-      <Button onClick={toggleForslag} backgroundColor='#c46a6a' value='Avbryt' />
+      <Button onClick={toggleForslag} backgroundColor={COLORS.color5} value='Avbryt' />
       <Button type='submit' backgroundColor={COLORS.color3} value={activeForslagId !== false ? 'Lagre' : 'Legg til'} />
     </div>
     <style jsx>

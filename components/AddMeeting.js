@@ -14,7 +14,7 @@ export default ({ addMeeting, updating, toggleImport }) => (
     <div>
       <Button
         onClick={toggleImport}
-        backgroundColor='#c46a6a'
+        backgroundColor={COLORS.color5}
         value='Avbryt'
       />
       <Button
