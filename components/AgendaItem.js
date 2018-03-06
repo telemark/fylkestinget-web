@@ -20,7 +20,8 @@ export default ({ meeting, item, adminView, toggleForslag, setNowPlaying, toggle
       }
       { !adminView && !hideButtons && meeting.now === item.id &&
         <Button
-          backgroundColor={COLORS.color3}
+          backgroundColor={COLORS.primary}
+          color={COLORS.primaryOpposite}
           value='Behandles nå'
         />
       }
@@ -33,10 +34,11 @@ export default ({ meeting, item, adminView, toggleForslag, setNowPlaying, toggle
       }
       { adminView && !hideButtons &&
         <Button
-          backgroundColor={meeting.now === item.id ? COLORS.color3 : null}
+          backgroundColor={meeting.now === item.id ? COLORS.primary : null}
           dataAgendaItem={item.id}
           dataAgendaNow={meeting.now}
           onClick={setNowPlaying}
+          color={meeting.now === item.id ? COLORS.primaryOpposite : null}
           value={meeting.now === item.id ? 'Behandles nå' : 'Sett til behandling'}
         />
       }
@@ -90,7 +92,7 @@ export default ({ meeting, item, adminView, toggleForslag, setNowPlaying, toggle
         }
 
         .button:hover {
-          background-color: #d8d8d8;
+          background-color: ${COLORS.primary};
         }
 
         @media screen and (max-width: 800px) {

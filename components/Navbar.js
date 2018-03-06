@@ -9,7 +9,11 @@ export default ({ username = false }) => (
           <img style={{ width: '36px' }} src={COMPANY.logo} />
         </a>
       </li>
-      <li><span className='app-name'>{APP.name}</span></li>
+      <li>
+        <a href='/'>
+          <span className='app-name'>{APP.name}</span>
+        </a>
+      </li>
     </ul>
     { username
       ? <ul className='right'>
@@ -18,9 +22,9 @@ export default ({ username = false }) => (
         <li><a href='/live'>Live</a></li>
         <li>
           <DropDownMenu name={username}>
-            <div><a href='/import'>Import</a></div>
-            <div><a href='/profile'>Profil</a></div>
-            <div><a href='/api/logout'>Logg ut</a></div>
+            <div className='menu'><a href='/import'>Import</a></div>
+            <div className='menu'><a href='/profile'>Profil</a></div>
+            <div className='menu'><a href='/api/logout'>Logg ut</a></div>
           </DropDownMenu>
         </li>
       </ul>
@@ -35,13 +39,26 @@ export default ({ username = false }) => (
       img {
         width: 36px;
       }
+      a {
+        text-transform: uppercase;
+      }
+      .menu {
+        border-bottom: 1px solid #d6d6d6;
+        line-height: 50px;
+      }
+      .menu:hover, .menu:hover a {
+        background: ${COLORS.secondary};
+        color: ${COLORS.secondaryOpposite};
+      }
       nav {
         grid-area: header;
         display: flex;
         justify-content: space-between;
-        background: ${COLORS.color1};
+        background: ${COLORS.primary};
         margin-bottom: 20px;
         height: 60px;
+        -webkit-box-shadow: 0 4px 5px 0 rgba(0, 0, 0, .14), 0 1px 10px 0 rgba(0, 0, 0, .12), 0 2px 4px -1px rgba(0, 0, 0, .2);
+        box-shadow: 0 4px 5px 0 rgba(0, 0, 0, .14), 0 1px 10px 0 rgba(0, 0, 0, .12), 0 2px 4px -1px rgba(0, 0, 0, .2);
       }
       ul {
         margin: 0;
@@ -60,15 +77,6 @@ export default ({ username = false }) => (
         font-size: large;
         margin: 10px;
         align-self: center;
-      }
-      a {
-        text-transform: uppercase;
-        text-decoration: none;
-        color: black;
-      }
-      a:hover {
-        color: #6AC4AE;
-        text-decoration: underline;
       }
       @media screen and (max-width: 800px) {
         .app-name {

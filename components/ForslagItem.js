@@ -14,7 +14,7 @@ export default ({ data, index, adminView, toggleShowForslag, deleteForslag, togg
         adminView &&
           <Button
             dataRefId={data.refId}
-            backgroundColor={COLORS.color5}
+            backgroundColor={COLORS.secondary}
             onClick={deleteForslag}
             value='Slett'
           />
@@ -24,7 +24,7 @@ export default ({ data, index, adminView, toggleShowForslag, deleteForslag, togg
           <Button
             dataRefId={data.refId}
             dataAgendaItem={data.agendaId}
-            backgroundColor={COLORS.color3}
+            backgroundColor={COLORS.secondary}
             onClick={toggleForslag}
             value='Endre'
           />
@@ -33,9 +33,9 @@ export default ({ data, index, adminView, toggleShowForslag, deleteForslag, togg
         adminView &&
           <Button
             dataRefId={data.refId}
-            backgroundColor={COLORS.color3}
+            backgroundColor={data.show ? COLORS.primary : COLORS.secondary}
+            color={data.show && COLORS.primaryOpposite}
             dataShowState={data.show}
-            className={data.show ? 'isVisible' : ''}
             onClick={toggleShowForslag}
             value={data.show ? 'Skjul' : 'Vis'}
           />
@@ -43,9 +43,6 @@ export default ({ data, index, adminView, toggleShowForslag, deleteForslag, togg
     </div>
     <style jsx>
       {`
-        .isVisible {
-          background-color: ${COLORS.color3};
-        }
         .author {
           font-size: ${large ? 'large' : '14px'};
           color: #4c4c4c;

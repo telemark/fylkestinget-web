@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { COMPANY, APP } from '../config'
+import { COMPANY, APP, COLORS } from '../config'
 
 export default ({ children }) => (
   <div className='container'>
@@ -8,6 +8,7 @@ export default ({ children }) => (
       <link rel='icon' sizes='192x192' href={COMPANY.icon192x192} />
       <link rel='apple-touch-icon' href={COMPANY.icon152x152} />
       <link rel='shortcut icon' href={COMPANY.favicon} />
+      <link href='//fonts.googleapis.com/css?family=Open+Sans:300,400,700,800' rel='stylesheet' />
       <title>{COMPANY.name} - {APP.name} - {APP.version}</title>
     </Head>
     { children }
@@ -15,26 +16,34 @@ export default ({ children }) => (
       {`
         body {
           background: #f2f2f2;
-          font-family: "Open sans", sans-serif;
+          font-family: 'Open sans', sans-serif;
           margin: 0;
           padding: 0;
           height: 100%;
           text-align: center;
         }
+        ::selection {
+          background: ${COLORS.secondary};
+          color: ${COLORS.secondaryOpposite};
+        }
         h1, h2, h3, h4, h5, h6 {
-          font-family: Arial, sans-serif;
+          // font-family: Arial, sans-serif;
         }
         h1 {
           font-weight: 400;
           font-size: 24px;
         }
-       h2 {
+        h2 {
           -webkit-margin-after: auto;
           font-weight: normal;
         }
         a {
           text-decoration: none;
-          color: black;
+          color: ${COLORS.secondary};
+        }
+        a:hover {
+          color: ${COLORS.secondaryLight};
+          text-decoration: underline;
         }
         .container {
           display: grid;

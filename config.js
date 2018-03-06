@@ -16,15 +16,14 @@ const config = {
     icon192x192: process.env.COMPANY_ICON192x192 || '/static/icons/chrome-touch-icon-192x192.png'
   },
   COLORS: {
-    color1: process.env.COLOR1 || '#ffd520',
-    color2: process.env.COLOR2 || '#000000',
-    color3: process.env.COLOR3 || '#6ac4ae',
-    color4: process.env.COLOR4 || '#00b1c7',
-    color5: process.env.COLOR5 || '#e30438',
-    color6: process.env.COLOR6 || '#9560a5',
-    color7: process.env.COLOR7 || '#6a493e',
-    color8: process.env.COLOR8 || '#f78815',
-    color9: process.env.COLOR9 || '#006c83'
+    primary: process.env.COLOR_PRIMARY || '#ffd520',
+    primaryOpposite: process.env.COLOR_PRIMARY_OPPOSITE || '#000000',
+    primaryLight: process.env.COLOR_PRIMARY_LIGHT || '#ffff5d',
+    primaryDark: process.env.COLOR_PRIMARY_DARK || '#c7a400',
+    secondary: process.env.COLOR_SECONDARY || '#000000',
+    secondaryOpposite: process.env.COLOR_SECONDARY_OPPOSITE || '#ffffff',
+    secondaryLight: process.env.COLOR_SECONDARY_LIGHT || '#2c2c2c',
+    secondaryDark: process.env.COLOR_SECONDARY_DARK || '#000000'
   },
   OPENGOV_URL: process.env.OPENGOV_URL || 'http://opengov.cloudapp.net', // URL to opengov
   OPENGOV_PATH: process.env.OPENGOV_PATH || '/Meetings/tfk', // Path to opengov meetings

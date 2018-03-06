@@ -1,4 +1,5 @@
 import { Fragment } from 'react'
+import { COLORS } from '../config'
 
 export default (props) => {
   const propTypes = {
@@ -43,7 +44,8 @@ export default (props) => {
           }
 
           input:hover {
-            background-color: #d8d8d8;
+            background-color: ${COLORS.primary};
+            color: ${COLORS.primaryOpposite};
           }
 
           input:disabled {

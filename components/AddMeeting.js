@@ -14,12 +14,12 @@ export default ({ addMeeting, updating, toggleImport }) => (
     <div>
       <Button
         onClick={toggleImport}
-        backgroundColor={COLORS.color5}
+        backgroundColor={COLORS.secondary}
         value='Avbryt'
       />
       <Button
         type='submit'
-        backgroundColor={COLORS.color3}
+        backgroundColor={COLORS.secondary}
         disabled={updating}
         value='Importer'
       />
