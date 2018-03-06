@@ -93,6 +93,7 @@ export default ({ meeting, item, adminView, toggleForslag, setNowPlaying, toggle
 
         .button:hover {
           background-color: ${COLORS.primary};
+          color: ${COLORS.secondary};
         }
 
         @media screen and (max-width: 800px) {

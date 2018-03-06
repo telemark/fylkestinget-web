@@ -27,7 +27,7 @@ export default class extends React.Component {
   render () {
     return (
       <div className='menu' ref={node => { this.node = node }}>
-        <a onClick={this.handleClick} href='#'>{this.props.name}</a>
+        <a onClick={this.handleClick}>{this.props.name}</a>
         {
           this.state.isOpen &&
             <div className='menu-content'>
@@ -38,6 +38,7 @@ export default class extends React.Component {
           {`
             .menu {
               position: relative;
+              cursor: pointer;
             }
             .menu-content {
               display: inline-block;
