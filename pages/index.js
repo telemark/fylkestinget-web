@@ -19,7 +19,8 @@ class Admin extends Component {
       updating: false,
       doAddForslag: false,
       adminView: true,
-      activeAgendaId: false
+      activeAgendaId: false,
+      activeForslagId: false
     }
     this.addForslag = this.addForslag.bind(this)
     this.setNowPlaying = this.setNowPlaying.bind(this)
@@ -38,7 +39,8 @@ class Admin extends Component {
     e.preventDefault()
     const newState = !this.state.doAddForslag
     const agendaId = e.target.dataset ? e.target.dataset.agendaItem : false
-    this.setState({doAddForslag: newState, activeAgendaId: agendaId})
+    const forslagId = e.target.dataset ? e.target.dataset.refId : false
+    this.setState({doAddForslag: newState, activeAgendaId: agendaId, activeForslagId: forslagId})
   }
 
   async toggleShowForslag (e) {
@@ -68,11 +70,11 @@ class Admin extends Component {
   async addForslag (e) {
     e.preventDefault()
     this.setState({updating: true})
-    console.log('Adding forslag')
     // Retrieves new data
     const fromField = document.getElementById('from')
     const proposalField = document.getElementById('proposal')
     const agendaId = this.state.activeAgendaId
+    const forslagId = this.state.activeForslagId
     const data = {
       agendaId: agendaId,
       from: fromField.value,
@@ -80,11 +82,17 @@ class Admin extends Component {
       timeStamp: new Date().getTime(),
       show: false
     }
-    // Adds new data
-    gun.get('fylkestinget').get('forslag').set(data)
+    // Change data or adds new data
+    if (forslagId !== undefined) {
+      console.log('Changing forslag')
+      gun.get('fylkestinget').get('forslag').get(forslagId).put(data)
+    } else {
+      console.log('Adding forslag')
+      gun.get('fylkestinget').get('forslag').set(data)
+    }
     fromField.value = ''
     proposalField.value = ''
-    this.setState({updating: false, activeAgendaId: false, doAddForslag: false})
+    this.setState({updating: false, activeAgendaId: false, activeForslagId: false, doAddForslag: false})
   }
 
   render () {
@@ -97,6 +105,7 @@ class Admin extends Component {
           updating={this.state.updating}
           toggleForslag={this.toggleForslag}
           activeAgendaId={this.state.activeAgendaId}
+          activeForslagId={this.state.activeForslagId}
         />
         }
         {!this.state.doAddForslag &&

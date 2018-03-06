@@ -10,14 +10,23 @@ function getAgendaTitle (meeting, activeAgendaId) {
   return (<h1>{title}</h1>)
 }
 
-export default ({addForslag, meeting, updating, toggleForslag, activeAgendaId}) => (
+function getForslagData (meeting, activeForslagId, field) {
+  let data = ''
+  if (meeting && meeting.forslag && activeForslagId) {
+    const forslag = meeting.forslag.find(item => item.refId === activeForslagId)
+    data = forslag[field]
+  }
+  return data
+}
+
+export default ({addForslag, meeting, updating, toggleForslag, activeAgendaId, activeForslagId}) => (
   <form onSubmit={addForslag}>
     {getAgendaTitle(meeting, activeAgendaId)}
-    <input type='text' id='from' placeholder='Forslagsstiller' required />
-    <textarea id='proposal' placeholder='Forslagstekst' required />
+    <input type='text' id='from' placeholder='Forslagsstiller' defaultValue={getForslagData(meeting, activeForslagId, 'from')} required />
+    <textarea id='proposal' placeholder='Forslagstekst' defaultValue={getForslagData(meeting, activeForslagId, 'proposal')} required />
     <div>
       <Button onClick={toggleForslag} backgroundColor='#c46a6a' value='Avbryt' />
-      <Button type='submit' backgroundColor={COLORS.color3} value='Legg til' />
+      <Button type='submit' backgroundColor={COLORS.color3} value={activeForslagId !== false ? 'Lagre' : 'Legg til'} />
     </div>
     <style jsx>
       {`

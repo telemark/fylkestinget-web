@@ -2,7 +2,7 @@ import Markdown from 'react-markdown'
 import { COLORS } from '../config'
 import Button from './Button'
 
-export default ({ data, index, adminView, toggleShowForslag, deleteForslag, large }) => (
+export default ({ data, index, adminView, toggleShowForslag, deleteForslag, toggleForslag, large }) => (
   <div className='forslag'>
     <div><h2>{index + 1}</h2></div>
     <div className='author'>av {data.from}</div>
@@ -17,6 +17,16 @@ export default ({ data, index, adminView, toggleShowForslag, deleteForslag, larg
             backgroundColor='#c46a6a'
             onClick={deleteForslag}
             value='Slett'
+          />
+      }
+      {
+        adminView &&
+          <Button
+            dataRefId={data.refId}
+            dataAgendaItem={data.agendaId}
+            backgroundColor={COLORS.color3}
+            onClick={toggleForslag}
+            value='Endre'
           />
       }
       {
