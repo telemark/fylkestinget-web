@@ -49,6 +49,13 @@ class Live extends Component {
             ? renderAgenda(this.state.meeting, this.state.isFull)
             : 'Det behandles ingen saker for øyeblikket'
           }
+          <style jsx global>
+            {`
+              .fullscreen-enabled {
+                overflow: auto;
+              }
+            `}
+          </style>
         </Fullscreen>
       </Page>
     )
