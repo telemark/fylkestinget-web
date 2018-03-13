@@ -15,11 +15,13 @@ export default ({ addMeeting, updating, toggleImport }) => (
       <Button
         onClick={toggleImport}
         backgroundColor={COLORS.secondary}
+        color={COLORS.secondaryOpposite}
         value='Avbryt'
       />
       <Button
         type='submit'
         backgroundColor={COLORS.secondary}
+        color={COLORS.secondaryOpposite}
         disabled={updating}
         value='Importer'
       />

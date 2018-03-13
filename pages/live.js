@@ -4,6 +4,8 @@ import KeyHandler, {KEYPRESS} from 'react-key-handler'
 import Session from '../components/Session'
 import Page from '../components/Page'
 import AgendaItem from '../components/AgendaItem'
+import Button from '../components/Button'
+import { COLORS } from '../config'
 import Gun from 'gun/gun'
 import 'gun/lib/open'
 
@@ -43,6 +45,12 @@ class Live extends Component {
   render () {
     return (
       <Page username={this.props.user ? this.props.user.userPrincipalName : null}>
+        <Button
+          onClick={this.toggleFullscreen}
+          backgroundColor={COLORS.secondary}
+          color={COLORS.secondaryOpposite}
+          value='Full skjerm'
+        />
         <Fullscreen enabled={this.state.isFull} onChange={isFull => this.setState({isFull})}>
           <KeyHandler keyEventName={KEYPRESS} keyValue='f' onKeyHandle={this.toggleFullscreen} />
           {this.state.meeting && this.state.meeting.now
