@@ -50,6 +50,9 @@ export default ({ username = false }) => (
         background: ${COLORS.secondary};
         color: ${COLORS.secondaryOpposite};
       }
+      .menu a {
+        color: #000000;
+      }
       nav {
         grid-area: header;
         display: flex;

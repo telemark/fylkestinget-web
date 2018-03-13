@@ -15,6 +15,7 @@ export default ({ data, index, adminView, toggleShowForslag, deleteForslag, togg
           <Button
             dataRefId={data.refId}
             backgroundColor={COLORS.secondary}
+            color={COLORS.secondaryOpposite}
             onClick={deleteForslag}
             value='Slett'
           />
@@ -25,6 +26,7 @@ export default ({ data, index, adminView, toggleShowForslag, deleteForslag, togg
             dataRefId={data.refId}
             dataAgendaItem={data.agendaId}
             backgroundColor={COLORS.secondary}
+            color={COLORS.secondaryOpposite}
             onClick={toggleForslag}
             value='Endre'
           />
@@ -34,7 +36,7 @@ export default ({ data, index, adminView, toggleShowForslag, deleteForslag, togg
           <Button
             dataRefId={data.refId}
             backgroundColor={data.show ? COLORS.primary : COLORS.secondary}
-            color={data.show && COLORS.primaryOpposite}
+            color={data.show ? COLORS.primaryOpposite : COLORS.secondaryOpposite}
             dataShowState={data.show}
             onClick={toggleShowForslag}
             value={data.show ? 'Skjul' : 'Vis'}

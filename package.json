@@ -25,9 +25,9 @@
     "coverage": "nyc ava",
     "coveralls": "nyc ava && nyc report --reporter=lcov && cat coverage/lcov.info | coveralls",
     "standard-fix": "standard --fix",
-    "dev": "node server.js",
+    "dev": "rm -rf ./node_modules/.cache/babel-loader && node server.js",
     "build": "next build",
-    "start": "node server.js",
+    "start": "rm -rf ./node_modules/.cache/babel-loader && npm run build && node server.js",
     "refresh": "rm -rf node_modules && rm package-lock.json && npm install",
     "deploy": "now -E production.env && now alias"
   },
@@ -35,6 +35,8 @@
   "license": "MIT",
   "dependencies": {
     "axios": "0.18.0",
+    "babel-plugin-inline-dotenv": "1.1.2",
+    "babel-plugin-transform-inline-environment-variables": "0.3.0",
     "dotenv": "5.0.1",
     "gun": "0.9.96",
     "jsonwebtoken": "8.2.0",
