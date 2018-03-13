@@ -27,7 +27,7 @@
     "standard-fix": "standard --fix",
     "dev": "rm -rf ./node_modules/.cache/babel-loader && node server.js",
     "build": "next build",
-    "start": "rm -rf ./node_modules/.cache/babel-loader && npm run build && node server.js",
+    "start": "NODE_ENV=production node server.js",
     "refresh": "rm -rf node_modules && rm package-lock.json && npm install",
     "deploy": "now -E production.env && now alias"
   },
