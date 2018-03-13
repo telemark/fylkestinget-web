@@ -6,7 +6,7 @@ export default ({ username = false }) => (
     <ul className='left'>
       <li>
         <a href='/'>
-          <img style={{ width: '36px' }} src={COMPANY.logo} />
+          <img className='logo' src={COMPANY.logo} />
         </a>
       </li>
       <li>
@@ -36,8 +36,8 @@ export default ({ username = false }) => (
       </ul>
     }
     <style jsx>{`
-      img {
-        width: 36px;
+      .logo {
+        width: ${COMPANY.logoWidth || '36px'}
       }
       a {
         text-transform: uppercase;
