@@ -36,7 +36,6 @@ const config = {
 
 module.exports = {
   debug: true,
-  HOST_URL: process.env.NODE_ENV === 'production' ? `https://${alias}` : 'http://localhost:3000',
   autodiscover_url: 'https://login.microsoftonline.com/' + config.tenant_id + '/.well-known/openid-configuration',
   graph_user_info_url: [
     'https://graph.microsoft.com/v1.0/me?$select=businessPhones,displayName,givenName,jobTitle,mail,mobilePhone,officeLocation,surname,userPrincipalName,department,birthday,companyName'

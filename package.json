@@ -29,7 +29,7 @@
     "build": "next build",
     "start": "NODE_ENV=production node server.js",
     "refresh": "rm -rf node_modules && rm package-lock.json && npm install",
-    "deploy": "now -E production.env && now alias"
+    "deploy": "now && now alias"
   },
   "keywords": [],
   "license": "MIT",
@@ -38,7 +38,7 @@
     "babel-plugin-inline-dotenv": "1.1.2",
     "babel-plugin-transform-inline-environment-variables": "0.3.0",
     "dotenv": "5.0.1",
-    "gun": "0.9.97",
+    "gun": "0.9.98",
     "jsonwebtoken": "8.2.0",
     "micro": "9.1.1",
     "micro-cookie-session": "2.0.0-beta.1",
@@ -64,10 +64,11 @@
     "alias": "fylkestinget.t-fk.no",
     "type": "npm",
     "engines": {
-      "node": "8.9.4"
+      "node": "8.10.4"
     },
     "env": {
       "NODE_ENV": "production"
-    }
+    },
+    "dotenv": "production.env"
   }
 }
