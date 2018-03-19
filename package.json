@@ -17,7 +17,7 @@
   ],
   "main": "index.js",
   "engines": {
-    "node": ">=8.9.4"
+    "node": ">=8.10.0"
   },
   "scripts": {
     "test": "standard && nsp check && ava",
@@ -27,7 +27,7 @@
     "standard-fix": "standard --fix",
     "dev": "rm -rf ./node_modules/.cache/babel-loader && node server.js",
     "build": "next build",
-    "start": "NODE_ENV=production node server.js",
+    "start": "node server.js",
     "refresh": "rm -rf node_modules && rm package-lock.json && npm install",
     "deploy": "now && now alias"
   },
@@ -64,10 +64,7 @@
     "alias": "fylkestinget.t-fk.no",
     "type": "npm",
     "engines": {
-      "node": "8.10.4"
-    },
-    "env": {
-      "NODE_ENV": "production"
+      "node": "8.10.0"
     },
     "dotenv": "production.env"
   }

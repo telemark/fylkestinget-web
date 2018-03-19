@@ -30,6 +30,7 @@ function s3Configuration () {
   let s3 = false
   if (useS3() === true) {
     console.log('> s3 storage configured')
+    console.log(`> bucket ${process.env.AWS_S3_BUCKET}`)
     s3 = {
       key: process.env.AWS_ACCESS_KEY_ID,
       secret: process.env.AWS_SECRET_ACCESS_KEY,
