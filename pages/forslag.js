@@ -7,7 +7,10 @@ import 'gun/lib/open'
 
 const { HOST_URL } = require('../config')
 const gunURL = `${HOST_URL}/gun`
-const gun = Gun(gunURL)
+const gun = Gun({
+  peers: gunURL,
+  localStorage: false
+})
 const repackMeeting = require('../lib/repack-meeting')
 
 class Forslag extends Component {

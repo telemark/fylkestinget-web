@@ -41,6 +41,9 @@ export default ({ username = false }) => (
       }
       a {
         text-transform: uppercase;
+      },
+      .app-name.a {
+        text-transform: none;
       }
       .menu {
         border-bottom: 1px solid #d6d6d6;
