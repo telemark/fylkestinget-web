@@ -5,9 +5,10 @@ import ListMeetings from '../components/ListMeetings'
 import AddMeeting from '../components/AddMeeting'
 import Gun from 'gun/gun'
 import 'gun/lib/open'
+import getConfig from 'next/config'
+import axios from 'axios'
 
-const axios = require('axios')
-const { HOST_URL } = require('../config')
+const { serverRuntimeConfig: { HOST_URL } } = getConfig()
 const gunURL = `${HOST_URL}/gun`
 const gun = Gun({
   peers: gunURL,

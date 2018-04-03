@@ -1,5 +1,6 @@
 import { Fragment } from 'react'
-import { COLORS } from '../config'
+import getConfig from 'next/config'
+const { publicRuntimeConfig: { COLORS } } = getConfig()
 
 export default (props) => {
   const propTypes = {

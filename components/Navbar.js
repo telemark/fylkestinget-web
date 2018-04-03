@@ -1,5 +1,6 @@
 import DropDownMenu from './DropDownMenu'
-import { COMPANY, COLORS, APP } from '../config'
+import getConfig from 'next/config'
+const { publicRuntimeConfig: { COMPANY, COLORS, APP } } = getConfig()
 
 export default ({ username = false }) => (
   <nav>

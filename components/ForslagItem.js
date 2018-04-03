@@ -1,6 +1,7 @@
 import Markdown from 'react-markdown'
-import { COLORS } from '../config'
 import Button from './Button'
+import getConfig from 'next/config'
+const { publicRuntimeConfig: { COLORS } } = getConfig()
 
 export default ({ data, index, adminView, toggleShowForslag, deleteForslag, toggleForslag, large }) => (
   <div className='forslag'>

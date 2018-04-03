@@ -1,6 +1,7 @@
 import AgendaItemListForslag from './AgendaItemListForslag'
-import { COLORS, OPENGOV_URL, OPENGOV_PATH, MAIL } from '../config'
+import getConfig from 'next/config'
 import Button from './Button'
+const { publicRuntimeConfig: { COLORS, OPENGOV_URL, OPENGOV_PATH, MAIL } } = getConfig()
 
 export default ({ meeting, item, adminView, toggleForslag, setNowPlaying, toggleShowForslag, deleteForslag, hideButtons = false, large = false }) => (
   <div className='wrapper'>

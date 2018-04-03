@@ -5,11 +5,11 @@ import Session from '../components/Session'
 import Page from '../components/Page'
 import AgendaItem from '../components/AgendaItem'
 import Button from '../components/Button'
-import { COLORS } from '../config'
 import Gun from 'gun/gun'
 import 'gun/lib/open'
+import getConfig from 'next/config'
 
-const { HOST_URL } = require('../config')
+const { serverRuntimeConfig: { HOST_URL }, publicRuntimeConfig: { COLORS } } = getConfig()
 const gunURL = `${HOST_URL}/gun`
 const gun = Gun({
   peers: gunURL,
