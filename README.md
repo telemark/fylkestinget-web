@@ -52,10 +52,10 @@ npm i
 
 ### Edit config
 
-See [config.js](config.js)
+See [next.config.js](next.config.js)
 
 ```sh
-vim config.js
+vim next.config.js
 ```
 
 ### Start fylkestinget-web
