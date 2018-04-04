@@ -2,25 +2,24 @@ const dev = process.env.NODE_ENV !== 'production'
 if (dev) {
   require('dotenv').config()
 }
+const next = require('next')
+const { serverRuntimeConfig } = require('./next.config')
 const Gun = require('gun')
 const os = require('os')
 const micro = require('micro')
 const { parse: urlParse } = require('url')
 const { setup, login, callback, logout } = require('./api')
 const redirect = (res, location, statusCode = 302) => { res.statusCode = statusCode; res.setHeader('Location', location); res.end() }
-const { SESSION_KEY } = require('./secrets')
 const session = require('micro-cookie-session')({
   name: 'session',
-  keys: [SESSION_KEY],
+  keys: [serverRuntimeConfig.SESSION_KEY],
   maxAge: 24 * 60 * 60 * 1000
 })
-const next = require('next')
 const port = parseInt(process.env.PORT, 10) || 3000
 const app = next({ dev })
 const handle = app.getRequestHandler()
 const parseAgenda = require('./lib/parse-agenda')
 const dataFilePath = `${os.tmpdir()}/data.json`
-const { DEMO } = require('./config')
 
 function useS3 () {
   return process.env.AWS_ACCESS_KEY_ID !== undefined && process.env.AWS_SECRET_ACCESS_KEY !== undefined && process.env.AWS_S3_BUCKET !== undefined
@@ -53,7 +52,7 @@ const server = micro(async (req, res) => {
   session(req, res)
   const { pathname } = await urlParse(req.url, true)
   if (pathname === '/api/login') {
-    if (DEMO) {
+    if (serverRuntimeConfig.DEMO) {
       req.session.data = require('./test/user.json')
       redirect(res, '/')
       return
@@ -61,7 +60,7 @@ const server = micro(async (req, res) => {
     return login(req, res)
   } else if (pathname === '/api/logout') {
     req.session = null
-    if (DEMO) {
+    if (serverRuntimeConfig.DEMO) {
       redirect(res, '/')
       return
     }

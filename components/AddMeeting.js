@@ -1,5 +1,6 @@
-import { COLORS } from '../config'
+import getConfig from 'next/config'
 import Button from './Button'
+const { publicRuntimeConfig: { COLORS } } = getConfig()
 
 export default ({ addMeeting, updating, toggleImport }) => (
   <form onSubmit={addMeeting}>

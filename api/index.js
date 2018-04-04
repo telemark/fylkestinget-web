@@ -4,7 +4,7 @@ const { stringify } = require('querystring')
 const redirect = (res, location, statusCode = 302) => { res.statusCode = statusCode; res.setHeader('Location', location); res.end() }
 const urlBodyParse = require('urlencoded-body-parser')
 const pkg = require('../package.json')
-let config = require('../config')
+let { serverRuntimeConfig: config } = require('../next.config')
 
 function log (level, message) {
   if (config.debug) {

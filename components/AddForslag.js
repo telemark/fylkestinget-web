@@ -1,5 +1,6 @@
-import { COLORS } from '../config'
+import getConfig from 'next/config'
 import Button from './Button'
+const { publicRuntimeConfig: { COLORS } } = getConfig()
 
 function getAgendaTitle (meeting, activeAgendaId) {
   let title
