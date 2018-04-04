@@ -5,7 +5,9 @@ import AddForslag from '../components/AddForslag'
 import ListMeetings from '../components/ListMeetings'
 import Gun from 'gun/gun'
 import 'gun/lib/open'
-const { HOST_URL } = require('../config')
+import getConfig from 'next/config'
+
+const { serverRuntimeConfig: { HOST_URL } } = getConfig()
 const gunURL = `${HOST_URL}/gun`
 const gun = Gun({
   peers: gunURL,

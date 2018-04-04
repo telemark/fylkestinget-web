@@ -1,5 +1,6 @@
 import Head from 'next/head'
-import { COMPANY, APP, COLORS } from '../config'
+import getConfig from 'next/config'
+const { publicRuntimeConfig: { COMPANY, APP, COLORS } } = getConfig()
 
 export default ({ children }) => (
   <div className='container'>
