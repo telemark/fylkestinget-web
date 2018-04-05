@@ -38,7 +38,7 @@
     "axios": "0.18.0",
     "dotenv": "5.0.1",
     "gun": "0.9.991",
-    "jsonwebtoken": "8.2.0",
+    "jsonwebtoken": "8.2.1",
     "micro": "9.1.1",
     "micro-cookie-session": "2.0.0-beta.1",
     "next": "5.1.0",
