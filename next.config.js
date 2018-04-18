@@ -55,6 +55,7 @@ module.exports = {
     },
     OPENGOV_URL: process.env.OPENGOV_URL || 'http://opengov.cloudapp.net', // URL to opengov
     OPENGOV_PATH: process.env.OPENGOV_PATH || '/Meetings/tfk', // Path to opengov meetings
-    MAIL: process.env.MAIL || 'forslag@t-fk.no' // mail where suggestions are sent
+    MAIL: process.env.MAIL || 'forslag@t-fk.no', // mail where suggestions are sent
+    HOST_URL: config.HOST_URL
   }
 }

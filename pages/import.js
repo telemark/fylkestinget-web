@@ -8,7 +8,7 @@ import 'gun/lib/open'
 import getConfig from 'next/config'
 import axios from 'axios'
 
-const { serverRuntimeConfig: { HOST_URL } } = getConfig()
+const { publicRuntimeConfig: { HOST_URL } } = getConfig()
 const gunURL = `${HOST_URL}/gun`
 const gun = Gun({
   peers: gunURL,

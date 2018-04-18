@@ -9,7 +9,7 @@ import Gun from 'gun/gun'
 import 'gun/lib/open'
 import getConfig from 'next/config'
 
-const { serverRuntimeConfig: { HOST_URL }, publicRuntimeConfig: { COLORS } } = getConfig()
+const { publicRuntimeConfig: { COLORS, HOST_URL } } = getConfig()
 const gunURL = `${HOST_URL}/gun`
 const gun = Gun({
   peers: gunURL,
