@@ -82,9 +82,9 @@ export default ({ meeting, item, adminView, toggleForslag, setNowPlaying, toggle
           display: inline-block;
           padding: 10 px;
           font-size: 14px;
+          line-height: 40px;
           width: 175px;
           height: 40px;
-          line-height: 40px
           margin: 10px;
           cursor: pointer;
           text-transform: uppercase;

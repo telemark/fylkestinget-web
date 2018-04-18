@@ -31,7 +31,7 @@ export default (props) => {
             font-size: ${props.fontSize || '14px'};
             width: ${props.width || '175px'};
             height: ${props.height || '40px'};
-            line-height: 40px
+            line-height: 40px;
             margin: 10px;
             cursor: pointer;
             text-transform: uppercase;
