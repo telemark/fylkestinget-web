@@ -82,6 +82,7 @@ export default ({ meeting, item, adminView, toggleForslag, setNowPlaying, toggle
           display: inline-block;
           padding: 10 px;
           font-size: 14px;
+          font-family: 'Open sans', sans-serif;
           line-height: 40px;
           width: 175px;
           height: 40px;

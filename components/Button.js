@@ -29,6 +29,7 @@ export default (props) => {
             display: inline-block;
             padding: 10 px;
             font-size: ${props.fontSize || '14px'};
+            font-family: 'Open sans', sans-serif;
             width: ${props.width || '175px'};
             height: ${props.height || '40px'};
             line-height: 40px;
