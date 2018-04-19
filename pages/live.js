@@ -12,8 +12,7 @@ import getConfig from 'next/config'
 const { publicRuntimeConfig: { COLORS, HOST_URL } } = getConfig()
 const gunURL = `${HOST_URL}/gun`
 const gun = Gun({
-  peers: gunURL,
-  localStorage: false
+  peers: gunURL
 })
 const repackMeeting = require('../lib/repack-meeting')
 
@@ -40,6 +39,7 @@ class Live extends Component {
   }
 
   async componentDidMount () {
+    window.localStorage.clear()
     gun.get('fylkestinget').open(data => {
       this.setState({meeting: repackMeeting(data)})
     })
