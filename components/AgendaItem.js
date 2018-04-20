@@ -7,7 +7,7 @@ export default ({ meeting, item, adminView, toggleForslag, setNowPlaying, toggle
   <div className='wrapper'>
     <h2>{item.agendanumber} - {item.title}</h2>
     <div className='item'>
-      { !hideButtons &&
+      { !hideButtons && item.public &&
         <a href={`${OPENGOV_URL}${OPENGOV_PATH}/AgendaItems/Details/${item.id}`} target='_blank'>
           <div className='button'>
             Se dokumenter
@@ -26,7 +26,7 @@ export default ({ meeting, item, adminView, toggleForslag, setNowPlaying, toggle
           value='Behandles nå'
         />
       }
-      { adminView && !hideButtons &&
+      { adminView && !hideButtons && item.public &&
         <Button
           dataAgendaItem={item.id}
           onClick={toggleForslag}
