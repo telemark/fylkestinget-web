@@ -39,7 +39,7 @@
     "dotenv": "5.0.1",
     "gun": "0.9.992",
     "jsonwebtoken": "8.2.1",
-    "micro": "9.1.1",
+    "micro": "9.3.0",
     "micro-cookie-session": "2.0.0-beta.1",
     "next": "5.1.0",
     "opengov-meetings": "5.1.0",
