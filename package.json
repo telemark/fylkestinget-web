@@ -46,7 +46,7 @@
     "react": "16.4.1",
     "react-dom": "16.4.1",
     "react-full-screen": "0.2.2",
-    "react-key-handler": "1.0.1",
+    "react-key-handler": "1.1.0",
     "react-markdown": "3.4.1",
     "urlencoded-body-parser": "2.0.1",
     "uuid": "3.3.2"
