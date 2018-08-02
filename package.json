@@ -34,7 +34,7 @@
   "keywords": [],
   "license": "MIT",
   "dependencies": {
-    "aws-sdk": "2.284.1",
+    "aws-sdk": "2.285.1",
     "axios": "0.18.0",
     "dotenv": "6.0.0",
     "gun": "0.9.9998",
