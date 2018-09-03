@@ -24,7 +24,7 @@ class Forslag extends Component {
   async componentDidMount () {
     window.localStorage.clear()
     gun.get('fylkestinget').open(data => {
-      this.setState({meeting: repackMeeting(data)})
+      this.setState({ meeting: repackMeeting(data) })
     })
   }
 

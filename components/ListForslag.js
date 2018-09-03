@@ -4,7 +4,7 @@ function repackForslag (meeting) {
   if (meeting.agenda && meeting.forslag) {
     const agenda = meeting.agenda.map(agenda => {
       const forslag = meeting.forslag.filter(forslag => forslag.agendaId === agenda.id && forslag.show === true)
-      return Object.assign({}, agenda, {forslag: forslag})
+      return Object.assign({}, agenda, { forslag: forslag })
     })
     const filteredAgenda = agenda.filter(agenda => agenda.forslag.length > 0)
     return filteredAgenda

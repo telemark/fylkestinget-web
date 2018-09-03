@@ -8,7 +8,7 @@ export default ({ data, index, adminView, toggleShowForslag, deleteForslag, togg
     <div><h2>{index + 1}</h2></div>
     <div className='author'>av {data.from}</div>
     <div>
-      <div style={{whiteSpace: 'pre-wrap'}}>
+      <div style={{ whiteSpace: 'pre-wrap' }}>
         <Markdown source={data.proposal} />
       </div>
       {

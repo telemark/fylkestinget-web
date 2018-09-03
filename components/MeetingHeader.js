@@ -19,7 +19,7 @@ function formatDate (date) {
   return `${dateList[0]}. ${monthNames[dateList[1]]} ${dateList[2]}`
 }
 
-export default ({meeting}) => (
+export default ({ meeting }) => (
   <div className='meeting-header'>
     <h1>{meeting.board}</h1>
     <div>Dato: {formatDate(meeting.date)}</div>

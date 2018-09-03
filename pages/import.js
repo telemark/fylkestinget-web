@@ -31,7 +31,7 @@ class Import extends Component {
   async componentDidMount () {
     window.localStorage.clear()
     gun.get('fylkestinget').open(data => {
-      this.setState({meeting: repackMeeting(data)})
+      this.setState({ meeting: repackMeeting(data) })
     })
   }
 
@@ -50,12 +50,12 @@ class Import extends Component {
 
   toggleImport () {
     const newState = !this.state.doAddMeeting
-    this.setState({doAddMeeting: newState})
+    this.setState({ doAddMeeting: newState })
   }
 
   async addMeeting (e) {
     e.preventDefault()
-    this.setState({updating: true})
+    this.setState({ updating: true })
     // Removes data
     this.cleanUpMeeting()
     // Retrieves new data
@@ -67,7 +67,7 @@ class Import extends Component {
     // Adds new data
     gun.get('fylkestinget').put(data)
     meetingUrlField.value = ''
-    this.setState({updating: false, doAddMeeting: false})
+    this.setState({ updating: false, doAddMeeting: false })
   }
 
   render () {

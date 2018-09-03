@@ -35,7 +35,7 @@ class Admin extends Component {
   async componentDidMount () {
     window.localStorage.clear()
     gun.get('fylkestinget').open(data => {
-      this.setState({meeting: repackMeeting(data)})
+      this.setState({ meeting: repackMeeting(data) })
     })
   }
 
@@ -44,7 +44,7 @@ class Admin extends Component {
     const newState = !this.state.doAddForslag
     const agendaId = e.target.dataset ? e.target.dataset.agendaItem : false
     const forslagId = e.target.dataset ? e.target.dataset.refId : false
-    this.setState({doAddForslag: newState, activeAgendaId: agendaId, activeForslagId: forslagId})
+    this.setState({ doAddForslag: newState, activeAgendaId: agendaId, activeForslagId: forslagId })
   }
 
   async toggleShowForslag (e) {
@@ -68,12 +68,12 @@ class Admin extends Component {
     if (nowPlayingId === agendaNow) {
       nowPlayingId = false
     }
-    gun.get('fylkestinget').put({now: nowPlayingId})
+    gun.get('fylkestinget').put({ now: nowPlayingId })
   }
 
   async addForslag (e) {
     e.preventDefault()
-    this.setState({updating: true})
+    this.setState({ updating: true })
     // Retrieves new data
     const fromField = document.getElementById('from')
     const proposalField = document.getElementById('proposal')
@@ -96,7 +96,7 @@ class Admin extends Component {
     }
     fromField.value = ''
     proposalField.value = ''
-    this.setState({updating: false, activeAgendaId: false, activeForslagId: false, doAddForslag: false})
+    this.setState({ updating: false, activeAgendaId: false, activeForslagId: false, doAddForslag: false })
   }
 
   render () {

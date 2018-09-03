@@ -20,7 +20,7 @@ function getForslagData (meeting, activeForslagId, field) {
   return data
 }
 
-export default ({addForslag, meeting, updating, toggleForslag, activeAgendaId, activeForslagId}) => (
+export default ({ addForslag, meeting, updating, toggleForslag, activeAgendaId, activeForslagId }) => (
   <form onSubmit={addForslag}>
     {getAgendaTitle(meeting, activeAgendaId)}
     <input type='text' id='from' placeholder='Forslagsstiller' defaultValue={getForslagData(meeting, activeForslagId, 'from')} required />

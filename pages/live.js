@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Fullscreen from 'react-full-screen'
-import KeyHandler, {KEYPRESS} from 'react-key-handler'
+import KeyHandler, { KEYPRESS } from 'react-key-handler'
 import Session from '../components/Session'
 import Page from '../components/Page'
 import AgendaItem from '../components/AgendaItem'
@@ -35,13 +35,13 @@ class Live extends Component {
 
   toggleFullscreen () {
     const isFull = this.state.isFull
-    this.setState({isFull: !isFull})
+    this.setState({ isFull: !isFull })
   }
 
   async componentDidMount () {
     window.localStorage.clear()
     gun.get('fylkestinget').open(data => {
-      this.setState({meeting: repackMeeting(data)})
+      this.setState({ meeting: repackMeeting(data) })
     })
   }
 
@@ -54,7 +54,7 @@ class Live extends Component {
           color={COLORS.secondaryOpposite}
           value='Full skjerm'
         />
-        <Fullscreen enabled={this.state.isFull} onChange={isFull => this.setState({isFull})}>
+        <Fullscreen enabled={this.state.isFull} onChange={isFull => this.setState({ isFull })}>
           <KeyHandler keyEventName={KEYPRESS} keyValue='f' onKeyHandle={this.toggleFullscreen} />
           {this.state.meeting && this.state.meeting.now
             ? renderAgenda(this.state.meeting, this.state.isFull)

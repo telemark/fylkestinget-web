@@ -45,7 +45,7 @@ function s3Configuration () {
 
 const server = micro(async (req, res) => {
   if (Gun.serve(req, res)) {
-    res.writeHead(200, {'Content-Type': 'text/html'})
+    res.writeHead(200, { 'Content-Type': 'text/html' })
     res.end(req)
     return
   }
@@ -90,7 +90,7 @@ const gun = Gun({
 })
 
 // Sync everything
-gun.on('out', {get: {'#': {'*': ''}}})
+gun.on('out', { get: { '#': { '*': '' } } })
 
 app.prepare().then(() => {
   server.listen(port, err => {
