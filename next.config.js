@@ -2,7 +2,7 @@ const uuid = require('uuid/v4')
 const { version, now: { alias } } = require('./package.json')
 
 const config = {
-  HOST_URL: process.env.NODE_ENV === 'production' ? process.env.MOA_DOMAIN || `https://${alias}` : 'http://localhost:3000',
+  HOST_URL: process.env.NODE_ENV === 'production' ? process.env.MOA_DOMAIN || `https://${alias}` : `http://localhost:${process.env.PORT || 3000}`,
   tenant_id: process.env.MOA_TENANT_ID || '<your-tenant-id>.onmicrosoft.com', // Your tenant ID
   client_id: process.env.MOA_CLIENT_ID || 'your-client-id', // Application ID in https://portal.azure.com/ -> Azure Active Directory -> App Registrations
   client_secret: process.env.MOA_CLIENT_SECRET || 'your-password' // Registered app in  https://portal.azure.com/ -> Settings -> Keys
