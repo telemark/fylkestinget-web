@@ -119,5 +119,3 @@ now alias fylkestinget-web-example-ykaxwfgdoy.now.sh your-configured-domain.com
 ## License
 
 [MIT](LICENSE)
-
-![Robohash image of fylkestinget-web](https://robots.kebabstudios.party/fylkestinget-web.png "Robohash image of fylkestinget-web")
