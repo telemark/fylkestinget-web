@@ -1,5 +1,6 @@
 const uuid = require('uuid/v4')
-const { version, now: { alias } } = require('./package.json')
+const { version } = require('./package.json')
+const { alias } = require('./now.json')
 
 const config = {
   HOST_URL: process.env.NODE_ENV === 'production' ? process.env.MOA_DOMAIN || `https://${alias}` : `http://localhost:${process.env.PORT || 3000}`,

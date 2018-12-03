@@ -6,5 +6,8 @@
   "engines": {
     "node": ">=10.0.0"
   },
-  "dotenv": "production.env"
+  "dotenv": "production.env",
+  "features": {
+    "cloud": "v1"
+  }
 }
