@@ -54,7 +54,7 @@
     "jsonwebtoken": "8.4.0",
     "micro": "9.3.3",
     "micro-cookie-session": "2.0.0-beta.1",
-    "next": "8.0.1",
+    "next": "8.0.3",
     "opengov-meetings": "5.2.1",
     "react": "16.8.2",
     "react-dom": "16.8.2",
