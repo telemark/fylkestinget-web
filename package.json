@@ -49,7 +49,7 @@
   "dependencies": {
     "aws-sdk": "2.420.0",
     "axios": "0.18.0",
-    "dotenv": "6.2.0",
+    "dotenv": "7.0.0",
     "gun": "0.9.9999991",
     "jsonwebtoken": "8.5.0",
     "micro": "9.3.3",
